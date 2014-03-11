@@ -1,0 +1,60 @@
+Immediate arithmetic	
+ADDIU	001001	rs	rt	immediate
+ANDI, 	001100	rs	rt	immeidate
+ORI, 	001101	rs	rt	immediate
+XORI, 	001110	rs	rt	immediate
+SLTI, 	001010	rs	rt	immediate
+SLTIU	001011	rs	rt	immediate
+
+(10 indicates arithmetic)
+(the last 3 with 0 appeneded makes op code, for insteand 0010 is add)
+(
+Register arithmetic	
+ADDU, 	000000 	rs	rt	rd	00000	100001
+SUBU, 	000000	rs	rt	rd	00000	100011
+AND, 	000000	rs	rt	rd	00000 	100100
+OR, 	000000	rs	rt	rd	00000	100101
+XOR, 	000000	rs	rt	rd	00000	100110
+NOR, 	000000	rs	rt	rd	00000	100111
+
+
+SLT, 	000000	rs	rt	rd	00000	101010
+SLTU	000000	rs	rt	rd	00000	101011
+
+Move	
+MOVN, 	000000	rs	rt	rd	000000	001011
+MOVZ	000000	rs	rt	rd	00000	001010
+
+(000 indicates shift)
+(3rd bit 1 indicates what goes into the shift amount, 0, sa, or rs)
+(2nd bit indicates right or left)
+(1st bit indicates logical or arithmetic)
+Shifts (constant and variable)	
+SLL, 	000000	00000	rt	rd	sa	000000
+SRL, 	000000	00000	rt	rd	sa	000010
+SRA, 	000000	00000	rt	rd	sa	000011
+SLLV, 	000000	rs	rt	rd	00000	000100
+SRLV, 	000000	rs	rt	rd	00000	000110
+SRAV	000000	rs	rt	rd	00000	000111
+
+Immediate load	
+LUI	001111	00000	rt	immediate
+
+Jumps (with one delay slot)	
+J, 	000010	instrindex
+JR, 	000000	rs	00000	00000 	hint	001000	
+JAL, 	000011	instrindex
+JALR	000000	rs	00000	rd	hint	001001
+Branches (with one delay slot)	
+BEQ, 	000100	rs	rt	offset
+BNE, 	000101	rs	rt	offset
+BLEZ, 	000110	rs	00000	offset	
+BGTZ,	000111	rs	00000	offset	 
+BLTZ, 	000001	rs	00000	offset
+BGEZ	000001	rs	00001	offset
+Memory Load/Store (little endian)	
+LW, 	100011	base	rt	offset
+LB, 	100000	base	rt	offset
+LBU, 	100100	base	rt 	offset
+SW, 	101011	base	rt	offset
+SB	101000	base	rt	offset
