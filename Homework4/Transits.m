@@ -1,74 +1,53 @@
 function [StartTime,Duration] = Transits(i,j,T)
-
 % Period in days
-Y = [  87.968; 224.695; 365.242; 686.930];
-T1 = Y(i);
-T2 = Y(j);
+Y = [87.968 224.695 365.242 686.930];
+
+% Ti is the initial time 
+% Tc is the time it takes for i to make half a revolution relative to j 
+% (which is the same as relative to j's left tangent line). 
+% Assumes approximately constant angular velocity
 Ti = 0;
+Tc = (Y(i).*Y(j)./(Y(j) - Y(i)))./2;
+
+% If angle isn't positive, we ignore the 0 that fzero finds in the while
+% loop. 
+% The variable positive_angle alternates between True and False.
+positive_angle = asin(FindSinL(Ti,i,j)) > 0;
+
 p = 1;
-TIME = T1*T2/(T2-T1)
+StartTime = zeros(0,1);
+Duration = zeros(0,1);
 while Ti <= T
-    a = angleBtwnOrigin(i,j,Ti)
-    int1 = T1*T2/(T2-T1)*a/pi
-    start = fzero(@(t) lineupL(i,j,t), [Ti (Ti + int1)])
-    if start > T
-        break
+    if positive_angle
+        start = fzero(@(t) FindSinL(t,i,j), [Ti (Ti + Tc)]);
+        endtime = fzero(@(t) FindSinR(t,i,j), [start (start + .5)]);
+        StartTime(p,1) = start;
+        Duration(p,1) = (endtime - start).*24.*60;
+        p = p + 1;
     end
-    b = angleBtwnOrigin(i,j,start)
-    int2 = T1*T2/(T2-T1)*b/pi
-    endtime = fzero(@(t) lineupR(i,j,t), [start (start + int2)])
-    StartTime(p) = start;
-    Duration(p) = endtime - start;
-    Ti = Ti + int1;
-    p = p+1;
-end
+    Ti = Ti + Tc;
+    positive_angle = ~positive_angle;
 end
 
-function angle = AngleFromOrigin(x)
-if x(1) > 0
-    angle = atan(x(2)/x(1));
-else 
-    angle = pi + atan(x(2)/x(1));
-end
-if angle < 0
-    angle = angle + 2*pi;
-end
-end
-
-function angle = anglebtwn(x,y)
-angle = AngleFromOrigin(y)-AngleFromOrigin(x);
-end
-
-function angle = angleBtwnOrigin(i,j,t)
+% FindSin finds angle between the planets and the tangent point on the sun
+% of the outer planet, L for left tangent points, and R for right.
+function sin = FindSinL(t,i,j)
+r = .6955;
 A = Location(t,i);
-x = [A.x A.y];
 B = Location(t,j);
-y = [B.x B.y];
-angle = anglebtwn(x,y);
-if angle < 0
-    angle = angle + 2*pi;
-end
-end
+[L, R] = TP(B,r);
+v2 = [B.x - L.x; B.y - L.y];
+v1 = [A.x - L.x; A.y - L.y];
+sin = (v1(1).*v2(2) - v1(2).*v2(1))./(norm(v1).*norm(v2));
 
-function angle = lineupL(i,j,t)
+function sin = FindSinR(t,i,j)
+r = .6955;
 A = Location(t,i);
-x = [A.x A.y];
 B = Location(t,j);
-y = [B.x B.y];
-[L,R] = TP(B,0.655);
-l = [L.x L.y];
-angle = anglebtwn(x-l, y-l);
-end
-
-function angle = lineupR(i,j,t)
-A = Location(t,i);
-x = [A.x A.y];
-B = Location(t,j);
-y = [B.x B.y];
-[L,R] = TP(B,0.655);
-r = [R.x R.y];
-angle = anglebtwn(x-r, y-r);
-end
+[L, R] = TP(B,r);
+v2 = [B.x - R.x; B.y - R.y];
+v1 = [A.x - R.x; A.y - R.y];
+sin = (v1(1).*v2(2) - v1(2).*v2(1))./(norm(v1).*norm(v2));
 
 
   function [L,R] = TP(E,r)
@@ -87,7 +66,7 @@ L = MakePoint(f*alfa+E.x,f*beta+E.y);
 alfa = -(c*E.x+s*E.y); beta = -(-s*E.x+c*E.y);
 f = sqrt(d^2-r^2)/sqrt(alfa^2+beta^2);
 R = MakePoint(f*alfa+E.x,f*beta+E.y);
-  end
+
 
 function E = Location(t,k)
  % E is a length-n structure array with the property that
@@ -108,9 +87,7 @@ function E = Location(t,k)
  c = cos(phi(k)*pi/180);
  s = sin(phi(k)*pi/180);
  E = MakePoint(c*x-s*y,s*x+c*y);
-end
  
 function P = MakePoint(x,y)
 % P is a 2-field structure with x assigned to P.x and y assigned to P.y.
 P = struct('x',x,'y',y);
-end
