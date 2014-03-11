@@ -40,6 +40,24 @@ SRAV	000000	rs	rt	rd	00000	000111
 Immediate load	
 LUI	001111	00000	rt	immediate
 
+
+IMPLEMENTATION:
+
+ALL "Set Less Than" (SLT):
+Do it in the ALU
+IF: ALU code = 1111 then the ALU OUT should become A<B (comparator)
+**Need 2 comparators: one for 2's complement one for unsigned**
+
+MOVN/MOVZ
+Do it in the ALU
+IF: ALU code = 10x1 then the ALU OUT should become A
+**WE will be changed to 0 if ALUcode = 10x1 and ALU returned false**
+
+LUI
+In Decode:
+Extend and ShiftLeft16 the Immediate, feed it into B
+In ALU, A will be 0, and we will be adding.
+
 Jumps (with one delay slot)	
 J, 	000010	instrindex
 JR, 	000000	rs	00000	00000 	hint	001000	
