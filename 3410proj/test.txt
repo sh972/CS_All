@@ -5,4 +5,23 @@ MOVN $5, $4, $2
 MOVN $6, $4, $0
 MOVZ $7, $4, $0
 MOVZ $8, $4, $4
-
+SUBU $16, $3, $2 #register 16 = 5
+SUBU $17, $16, $2 #register 17 = 3
+AND $18, $16, $17 #register 18 = 1
+OR $19, $16, $17 #register 19 = 7
+XOR $20, $16, $17 #register 20 = 6
+NOR $21, $16, $17 #register 21 = -8
+ADDIU $22, $0, -8
+SLT $23, $22, $20 #register 23 = 1
+SLT $24, $20, $21 #register 23 = 0
+SLTU $25, $22, $20 #register 23 = 0
+SLTU $26, $20, $21 #register 23 = 1
+SLL $24, $23, 31
+SRA $24, $24, 16
+SRL $24, $24, 4
+SLLV $24, $24, $2
+SLL $25, $26, 31
+SRAV $25, $25, $3
+SRLV $25, $25, $3
+LUI $26, 9
+SLTI $31, $3, 10

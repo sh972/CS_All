@@ -89,7 +89,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(810,660)" to="(810,770)"/>
     <wire from="(1270,640)" to="(1300,640)"/>
     <wire from="(510,800)" to="(510,840)"/>
-    <wire from="(900,660)" to="(1180,660)"/>
+    <wire from="(930,660)" to="(1180,660)"/>
     <wire from="(120,740)" to="(130,740)"/>
     <wire from="(1120,790)" to="(1130,790)"/>
     <wire from="(490,680)" to="(600,680)"/>
@@ -125,6 +125,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(850,700)" to="(850,820)"/>
     <wire from="(700,820)" to="(740,820)"/>
     <wire from="(370,770)" to="(370,850)"/>
+    <wire from="(930,730)" to="(980,730)"/>
     <wire from="(700,910)" to="(700,930)"/>
     <wire from="(600,810)" to="(600,910)"/>
     <wire from="(850,700)" to="(870,700)"/>
@@ -183,6 +184,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(1120,780)" to="(1180,780)"/>
     <wire from="(590,870)" to="(740,870)"/>
     <wire from="(370,870)" to="(370,930)"/>
+    <wire from="(900,660)" to="(930,660)"/>
     <wire from="(800,650)" to="(870,650)"/>
     <wire from="(490,680)" to="(490,800)"/>
     <wire from="(1070,250)" to="(1140,250)"/>
@@ -190,6 +192,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(910,780)" to="(1090,780)"/>
     <wire from="(650,630)" to="(700,630)"/>
     <wire from="(820,670)" to="(820,780)"/>
+    <wire from="(930,660)" to="(930,730)"/>
     <wire from="(580,730)" to="(580,830)"/>
     <wire from="(1070,240)" to="(1150,240)"/>
     <wire from="(770,810)" to="(840,810)"/>
@@ -228,6 +231,12 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <comp loc="(1040,270)" name="Isolate 45">
       <a name="facing" val="west"/>
     </comp>
+    <comp lib="0" loc="(980,730)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="32"/>
+      <a name="labelloc" val="east"/>
+    </comp>
     <comp lib="0" loc="(1300,660)" name="Pin">
       <a name="facing" val="north"/>
       <a name="width" val="32"/>
@@ -243,14 +252,8 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <comp loc="(770,770)" name="Isolator 2-3"/>
     <comp loc="(1120,780)" name="Isolate34"/>
     <comp lib="7" loc="(320,860)" name="MIPSProgramROM">
-      <a name="contents">ADDIU $2, $0, 2
-ADDIU $3, $0, -7
-ADDU $4, $2, $3
-MOVN $5, $4, $2
-MOVN $6, $4, $0
-MOVZ $7, $4, $0
-MOVZ $8, $4, $4
-
+      <a name="contents">ADDIU $2, $0, 9
+SLTI $3, $2, 10
 </a>
     </comp>
     <comp loc="(400,850)" name="Isolate12"/>
@@ -1466,7 +1469,6 @@ MOVZ $8, $4, $4
     <wire from="(40,80)" to="(80,80)"/>
     <wire from="(120,70)" to="(120,180)"/>
     <wire from="(120,70)" to="(250,70)"/>
-    <wire from="(80,1180)" to="(200,1180)"/>
     <wire from="(340,280)" to="(370,280)"/>
     <wire from="(100,1420)" to="(100,1460)"/>
     <wire from="(120,1160)" to="(120,1410)"/>
@@ -1622,6 +1624,7 @@ MOVZ $8, $4, $4
     <wire from="(120,600)" to="(120,790)"/>
     <wire from="(140,1400)" to="(140,1560)"/>
     <wire from="(100,1460)" to="(100,1600)"/>
+    <wire from="(80,1180)" to="(180,1180)"/>
     <wire from="(140,50)" to="(180,50)"/>
     <wire from="(220,240)" to="(220,250)"/>
     <wire from="(100,1050)" to="(180,1050)"/>
@@ -1698,6 +1701,9 @@ MOVZ $8, $4, $4
     <wire from="(200,90)" to="(220,90)"/>
     <wire from="(40,180)" to="(120,180)"/>
     <comp lib="1" loc="(200,650)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(200,1180)" name="NOT Gate">
       <a name="size" val="20"/>
     </comp>
     <comp lib="1" loc="(200,1190)" name="NOT Gate">
