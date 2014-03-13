@@ -2882,7 +2882,6 @@ SLTI $3, $2, 10
     <wire from="(150,270)" to="(170,270)"/>
     <wire from="(180,220)" to="(180,360)"/>
     <wire from="(290,470)" to="(290,480)"/>
-    <wire from="(430,280)" to="(620,280)"/>
     <wire from="(170,270)" to="(170,540)"/>
     <wire from="(290,380)" to="(290,390)"/>
     <wire from="(290,490)" to="(290,500)"/>
@@ -2907,6 +2906,7 @@ SLTI $3, $2, 10
     <wire from="(290,420)" to="(290,430)"/>
     <wire from="(350,270)" to="(400,270)"/>
     <wire from="(190,170)" to="(410,170)"/>
+    <wire from="(430,280)" to="(450,280)"/>
     <wire from="(190,180)" to="(250,180)"/>
     <wire from="(220,210)" to="(220,380)"/>
     <wire from="(170,220)" to="(180,220)"/>
@@ -2985,7 +2985,7 @@ SLTI $3, $2, 10
       <a name="facing" val="west"/>
     </comp>
     <comp lib="0" loc="(170,190)" name="Splitter"/>
-    <comp lib="0" loc="(620,280)" name="Pin">
+    <comp lib="0" loc="(450,280)" name="Pin">
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
       <a name="width" val="32"/>
