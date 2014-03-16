@@ -1,27 +1,39 @@
-ADDIU $2, $0, 2
-ADDIU $3, $0, 7
-ADDU $4, $2, $3
-MOVN $5, $4, $2
-MOVN $6, $4, $0
-MOVZ $7, $4, $0
-MOVZ $8, $4, $4
-SUBU $16, $3, $2 #register 16 = 5
-SUBU $17, $16, $2 #register 17 = 3
-AND $18, $16, $17 #register 18 = 1
-OR $19, $16, $17 #register 19 = 7
-XOR $20, $16, $17 #register 20 = 6
-NOR $21, $16, $17 #register 21 = -8
-ADDIU $22, $0, -8
-SLT $23, $22, $20 #register 23 = 1
-SLT $24, $20, $21 #register 23 = 0
-SLTU $25, $22, $20 #register 23 = 0
-SLTU $26, $20, $21 #register 23 = 1
-SLL $24, $23, 31
-SRA $24, $24, 16
-SRL $24, $24, 4
-SLLV $24, $24, $2
-SLL $25, $26, 31
-SRAV $25, $25, $3
-SRLV $25, $25, $3
-LUI $26, 9
-SLTI $31, $3, 10
+ADDIU $2, $0, 2		# R2 = 2
+ADDIU $3, $0, 7		# R3 = 7
+ADDU $4, $2, $3		# R4 = 9
+MOVN $5, $4, $2		# R5 = 9
+MOVN $6, $4, $1		# No change
+MOVZ $7, $4, $0		# R7 = 9
+MOVZ $8, $4, $4		# No change
+ANDI $2, $0, 0		# R2 = 0
+ADDIU $2, $0, -1	# R2 = ffffffff
+ANDI $3, $2, 73		# R3 = 49
+ORI $3, $2, 0		# R3 = ffffffff
+XORI $4, $2, 0		# R4 = ffffffff
+XORI $5, $4, 16		# R5 = ffffffef
+SLTI $11, $7, 9		# R11 = 0
+SLTI $11, $7, 11 	# R11 = 1
+SLTIU $2, $3, 0 	# R2 = 0
+SLTIU $2, $7, 12 	# R2 = 1
+ADDIU $2, $0, 2		# R2 = 2
+ADDIU $3, $0, 7		# R3 = 7
+SUBU $16, $3, $2 	# register 16 = 5
+SUBU $17, $16, $2 	# register 17 = 3
+AND $18, $16, $17 	# register 18 = 1
+OR $19, $16, $17 	# register 19 = 7
+XOR $20, $16, $17 	# register 20 = 6
+NOR $21, $16, $17 	# register 21 = fffffff8
+ADDIU $22, $0, -8       # register 22 = fffffff8
+SLT $23, $22, $20 	#register 23 = 1
+SLT $24, $20, $21 	#register 24 = 0
+SLTU $25, $22, $20 	#register 25 = 0
+SLTU $26, $20, $21 	#register 26 = 1
+SLL $24, $23, 31	#register 24 = 80000000
+SRA $24, $24, 16	# R24 = ffff8000
+SRL $24, $24, 4		# R24 = 0ffff800
+SLLV $24, $24, $2	# R24 = 3fffe000
+SLL $25, $26, 31	# R25 = 80000000
+SRAV $25, $25, $3	# R25 = ff000000
+SRLV $25, $25, $3	# R25 = 01fe0000
+LUI $26, 9		# R26 = 00090000
+SLTI $31, $3, 10	# R31 = 00000001
