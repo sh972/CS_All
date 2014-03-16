@@ -1,0 +1,39 @@
+Thank you for your PA1 submission!
+We ran a collection of automated test programs on your processor to exercise its various functionalities. Here are the results:
+[ 0 errors] Tests that ADDIU sign extends its immediate operand.
+[ 0 errors] Tests that ANDI, ORI, XORI zero extend their immediate operands.
+[ 0 errors] Tests the LUI instruction.
+[ 0 errors] Tests hazards for LUI instructions.
+[ 0 errors] Tests the MOVN and MOVZ instructions.
+[ 4 errors] Tests hazards for MOV instructions where the operand is not moved.
+    Error in register 23. Expected 0x00000008, but got 0x12345678.
+    Error in register 24. Expected 0x00000008, but got 0x12345678.
+    Error in register 26. Expected 0x00000008, but got 0x12345678.
+    Error in register 27. Expected 0x00000008, but got 0x12345678.
+[ 0 errors] Tests hazards for MOV instructions where the operand is moved.
+[ 0 errors] Tests the R-type arithmetic and logic instructions.
+[ 0 errors] Tests constant shifts.
+[ 0 errors] Tests variable shifts with shift amounts < 32.
+[ 0 errors] Tests variable shifts with shift amounts >= 32.
+[ 2 errors] Tests forwarding of variable shift amount.
+    Error in register 5. Expected 0x05800000, but got 0x00000016.
+    Error in register 7. Expected 0x18000000, but got 0x00000018.
+[ 0 errors] Tests the SLT instruction.
+[ 0 errors] Tests the SLTI instruction.
+[ 0 errors] Tests the SLTIU instruction.
+[ 0 errors] Tests the SLTU instruction.
+[ 0 errors] Ensures that I-type instructions work even if last six bits of immediate field match a function code of an R-type instruction.
+[ 0 errors] Tests hazard detection: 1-cycle hazards.
+[ 0 errors] Tests hazard detection: 2-cycle hazards.
+[ 0 errors] Tests hazard detection: 3-cycle hazards.
+[ 0 errors] Tests that the correct forwarding path is prioritized for simultaneous hazards.
+[ 0 errors] Tests that hazards are resolved by bypassing, not by stalling.
+[ 0 errors] Tests hazards: An I-type instruction writes to the same register as a previous R-type instruction. Immediate value must not be forwarded.
+[ 4 errors] Tests that hazards involving $0 are handled correctly.
+    Error in register 1. Expected 0x00000005, but got 0x00000011.
+    Error in register 2. Expected 0x00000005, but got 0x00000011.
+    Error in register 4. Expected 0x00000000, but got 0x00000018.
+    Error in register 5. Expected 0x00000000, but got 0x00000018.
+[ 0 errors] Runs all table B instructions, which should all be NOPs.
+TOTAL: 10 errors
+Tests with no errors: 22/25
