@@ -70,6 +70,17 @@ BLEZ, 	000110	rs	00000	offset
 BGTZ,	000111	rs	00000	offset	 
 BLTZ, 	000001	rs	00000	offset
 BGEZ	000001	rs	00001	offset
+
+LEZ = 100
+LTZ = 101
+GEZ = 110
+GTZ = 111
+SLT = 001
+EQ =  010
+NE =  011
+ALL OTHER JUMPS = 000
+ALL OTHERS doesn't matter
+
 Memory Load/Store (little endian)	
 LW, 	100011	base	rt	offset
 LB, 	100000	base	rt	offset
