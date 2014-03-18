@@ -210,9 +210,45 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(770,880)" to="(1090,880)"/>
     <wire from="(1250,620)" to="(1250,820)"/>
     <comp lib="7" loc="(320,830)" name="MIPSProgramROM">
-      <a name="contents">ADDIU $1, $0, 10
-MOVN $2, $1, $0
-MOVZ $3, $2, $0
+      <a name="contents">ADDIU $2, $0, 2		# R2 = 2
+ADDIU $3, $0, 7		# R3 = 7
+ADDU $4, $2, $3		# R4 = 9
+MOVN $5, $4, $2		# R5 = 9
+MOVN $6, $4, $1		# No change
+MOVZ $7, $4, $0		# R7 = 9
+MOVZ $8, $4, $4		# No change
+ANDI $2, $0, 0		# R2 = 0
+ADDIU $2, $0, -1	# R2 = ffffffff
+ANDI $3, $2, 73		# R3 = 49
+ORI $3, $2, 0		# R3 = ffffffff
+XORI $4, $2, 0		# R4 = ffffffff
+XORI $5, $4, 16		# R5 = ffffffef
+SLTI $11, $7, 9		# R11 = 0
+SLTI $11, $7, 11 	# R11 = 1
+SLTIU $2, $3, 0 	# R2 = 0
+SLTIU $2, $7, 12 	# R2 = 1
+ADDIU $2, $0, 2		# R2 = 2
+ADDIU $3, $0, 7		# R3 = 7
+SUBU $16, $3, $2 	# register 16 = 5
+SUBU $17, $16, $2 	# register 17 = 3
+AND $18, $16, $17 	# register 18 = 1
+OR $19, $16, $17 	# register 19 = 7
+XOR $20, $16, $17 	# register 20 = 6
+NOR $21, $16, $17 	# register 21 = fffffff8
+ADDIU $22, $0, -8       # register 22 = fffffff8
+SLT $23, $22, $20 	#register 23 = 1
+SLT $24, $20, $21 	#register 24 = 0
+SLTU $25, $22, $20 	#register 25 = 0
+SLTU $26, $20, $21 	#register 26 = 1
+SLL $24, $23, 31	#register 24 = 80000000
+SRA $24, $24, 16	# R24 = ffff8000
+SRL $24, $24, 4		# R24 = 0ffff800
+SLLV $24, $24, $2	# R24 = 3fffe000
+SLL $25, $26, 31	# R25 = 80000000
+SRAV $25, $25, $3	# R25 = ff000000
+SRLV $25, $25, $3	# R25 = 01fe0000
+LUI $26, 9		# R26 = 00090000
+SLTI $31, $3, 10	# R31 = 00000001
 </a>
     </comp>
     <comp lib="4" loc="(160,720)" name="Register">
@@ -4869,7 +4905,6 @@ MOVZ $3, $2, $0
     <wire from="(830,360)" to="(830,420)"/>
     <wire from="(890,520)" to="(920,520)"/>
     <wire from="(850,370)" to="(850,400)"/>
-    <wire from="(270,330)" to="(320,330)"/>
     <wire from="(620,550)" to="(730,550)"/>
     <wire from="(840,550)" to="(960,550)"/>
     <wire from="(820,360)" to="(830,360)"/>
@@ -4880,6 +4915,7 @@ MOVZ $3, $2, $0
     <wire from="(530,540)" to="(630,540)"/>
     <wire from="(790,370)" to="(790,400)"/>
     <wire from="(890,360)" to="(890,410)"/>
+    <wire from="(270,330)" to="(290,330)"/>
     <wire from="(630,530)" to="(630,540)"/>
     <wire from="(500,230)" to="(540,230)"/>
     <wire from="(230,570)" to="(240,570)"/>
@@ -4971,6 +5007,7 @@ MOVZ $3, $2, $0
     <wire from="(360,330)" to="(430,330)"/>
     <wire from="(300,510)" to="(330,510)"/>
     <wire from="(850,310)" to="(900,310)"/>
+    <wire from="(310,330)" to="(320,330)"/>
     <wire from="(960,360)" to="(960,400)"/>
     <wire from="(520,550)" to="(620,550)"/>
     <wire from="(260,560)" to="(270,560)"/>
@@ -4980,6 +5017,9 @@ MOVZ $3, $2, $0
     <wire from="(320,540)" to="(420,540)"/>
     <wire from="(640,320)" to="(720,320)"/>
     <comp lib="1" loc="(540,520)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(310,330)" name="NOT Gate">
       <a name="size" val="20"/>
     </comp>
     <comp lib="1" loc="(760,510)" name="NOT Gate">
