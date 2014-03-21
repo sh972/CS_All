@@ -1,8 +1,4 @@
-ADDIU $1, $0, 10
-MOVN $2, $1, $0
-MOVZ $3, $2, $0
-ADDIU $4, $0, 1
-ADDIU $5, $0, 4
-SLLV $6, $4, $5
-ADDIU $0, $0, 10
-ADDU $7, $0, $4
+ADDIU $1, $1, 1
+J 0
+ADDIU $2, $2, 1
+ADDIU $1, $1, -1
