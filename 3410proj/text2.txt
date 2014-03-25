@@ -1,4 +1,5 @@
 ADDIU $1, $1, 1
-J 0
+BEQ $0, $1, 8
 ADDIU $2, $2, 1
 ADDIU $1, $1, -1
+ADDIU $3, $3, 1
