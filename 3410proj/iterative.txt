@@ -1,0 +1,26 @@
+ADDIU $t1, $0, 0	# $t1 = 0
+ADDIU $a0, $zero, 40
+
+	#Begin while loop
+loop:
+ADDIU $t2, $0, 1	# $t2 = 1
+BEQ $a0, $t2, exit	# exit while loop
+NOP
+ADDIU $t1, $t1, 1	# increment $t1 by 1
+ANDI $t2, $a0, 1	# $t2 = n % 2
+BEQ $t2, $zero, even	# go to set n = n/2
+NOP
+
+SLL $t2, $a0, 1		# $t2 = 2n
+ADDU $a0, $a0, $t2 	# $a1 = 3n
+ADDIU $a0, $a0, 1	# $a1 = 3n + 1
+J loop			# recurse
+NOP
+
+even:
+SRA $a0, $a0, 1		# n = n/2
+J loop			# recurse
+NOP
+
+exit:
+ADDIU $v0, $t1, 0	# $v0 = $t1

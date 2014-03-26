@@ -1,0 +1,12 @@
+notok:
+BEQ $0, $0, ok
+NOP
+NOP
+NOP
+NOP
+NOP
+ADDIU $1, $1, 1000
+
+ok:
+ADDIU $2, $2, 10
+BEQ $0, $0, notok

@@ -1,0 +1,46 @@
+ADDIU $a0, $0, 40
+ADDIU $ra, $0, 9000
+
+recursion: 
+ADDIU $sp, $sp, 8	# makes room for link address (next stack)
+SW $ra, 4($sp)		# save link address
+ADDIU $t0, $v0, 0
+SW $a0, 0($sp)		# save the value of the output
+ADDIU $t1, $zero, 1	# $t1 = 1
+BEQ $a0, $t1, end	# if(n == 1) return 0
+NOP
+ANDI $t1, $a0, 1	# $t1 = n % 2
+BEQ $t1, $zero, even
+NOP
+BNE $t1, $zero, odd	 
+NOP
+
+
+even:
+SRA $a0, $a0, 1		# n/2
+JAL recursion		# r_hailstone(n/2)
+NOP
+LW $a0, 0($sp)		#load value of output
+ADDIU $v0, $v0, 1	# 1 + r_hailstone(n/2)
+SW $v0, 0($sp)
+J end
+NOP
+
+odd:
+SLL $t2, $a0, 1		# $t2 = 2n
+ADDU $a0, $a0, $t2	# $a0 = 3n
+ADDIU $a0, $a0, 1	# $a0 = 3n+1
+JAL recursion		#r_hailstone(3n+1)
+NOP
+LW $a0, 0($sp)		#load value of output
+ADDIU $v0, $v0, 1	#1 + r_hailstone(3n+1)
+SW $v0, 0($sp)
+J end
+NOP
+
+end:
+NOP
+LW $ra, 4($sp)		# load link address
+ADDIU $sp, $sp, -8	# return to previous $sp (previous stack)
+JR $ra		
+NOP	
