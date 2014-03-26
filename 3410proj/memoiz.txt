@@ -1,0 +1,21 @@
+# n is stored in $a0, A[] is stored in $a1, and s is stored in $a2
+ADDIU $t0, $0, 1	# $t0 = 1 (for use later)
+SLT $t1, $a0, $a2	# $t1 =  (n < s)
+SLL $t2, $a0, 2		
+ADDU $t5, $t2, $a1	# $t5 is the absolute address of A[n]
+LW $t2, 0($t5)		# $t2 = A[n]
+SLTU $t3, $0, $t2	# $t3 = (A[n] != 0)
+AND $t4, $t1, $t3	# $t4 = (n < s) && (A[n] != 0)
+BNE $t4, $0, End	# if $t4, return A[n] (using delay slot)
+ADDIU $v0, $t2, 0	# $v0 = A[n]
+
+BEQ $t0, $a0, End	# if (n == 1), return 0 (using delay slot)
+ADDIU $v0, $0, 0
+
+ANDI $t1, $a0, 1	# $t1 = (n % 2)
+
+BEQ $t1, $0, ___	# if !(n < s), don't store i
+NOP
+SW $a0, 0($t5)
+
+End:
