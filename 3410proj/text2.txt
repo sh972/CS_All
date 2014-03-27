@@ -29,24 +29,31 @@ ADDIU $3, $3, -1
 BEQ $2, $2, 12
 ADDIU $6, $6, 1
 ADDIU $5, $5, 1
+NOP
 BNE $1, $2, 12
 ADDIU $6, $6, 1
 ADDIU $5, $5, 1
+NOP
 BLEZ $0, 12
 ADDIU $6, $6, 1
 ADDIU $5, $5, 1
+NOP
 BLEZ $2, 12
 ADDIU $6, $6, 1
 ADDIU $5, $5, 1
+NOP
 BGTZ $1, 12
 ADDIU $6, $6, 1
 ADDIU $5, $5, 1
+NOP
 BLTZ $2, 12
 ADDIU $6, $6, 1
 ADDIU $5, $5, 1
+NOP
 BGEZ $0, 12
 ADDIU $6, $6, 1
 ADDIU $5, $5, 1
+NOP
 BGEZ $1, 12
 ADDIU $6, $6, 1
 ADDIU $5, $5, 1
