@@ -11,8 +11,9 @@ Our Execute stage is all condensed into a big Execute subcircuit, that does the 
 The Execute subcircuit has many subcircuits of its own. For each of the main inputs, A and B, with respective register addresses rs and rt, there is a forwarding unit that resolves data hazard issues that are present in this Mini-Mips processor. There is a multiplexor for B that chooses between B and the immediate. There are special sections that implement commands whose outputs do not come from the ALU. These commands include SLT, SLTI, SLTIU, and SLTU; MOVZ and MOVN; jumps and branches; and SW and SB. 
 
 \includegraphics[width=17cm]{EXOVER.png}
-\subsection{General Purpose ALU}
 
+\subsubsection{General Purpose ALU}
+The ALU (1.3) provides us the output for many of the simpler commands, and also provides us some intermediate outputs for the more specialized commands. Inputs A and B are determined by the specified command, but here we take them as given. We get the Op Code for the ALU as an input (1.1), and the SA is determined in a subcircuit (1.2), depending on whether or not the shift command was variable.  
 
 \subsubsection{Forwarding Unit}
 \includegraphics{Forward1.png}

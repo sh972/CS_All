@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.1.26)  27 MAR 2014 19:23
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.1.26)  27 MAR 2014 19:38
 entering extended mode
 **ex.tex
-(C:\Users\Colin\Documents\GitHub\CS4220-SP2014\3410proj\ex.tex
+(C:\Users\Colin\Documents\GitHub\CS4220-SP2014\3410proj\DesignDoc\ex.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -120,7 +120,7 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen112
 \Gin@req@width=\dimen113
 )
-(C:\Users\Colin\Documents\GitHub\CS4220-SP2014\3410proj\ex.aux)
+(C:\Users\Colin\Documents\GitHub\CS4220-SP2014\3410proj\DesignDoc\ex.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
 LaTeX Font Info:    ... okay on input line 4.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 4.
@@ -147,103 +147,107 @@ LaTeX Font Info:    ... okay on input line 4.
 \MPnumerator=\count104
 \makeMPintoPDFobject=\count105
 \everyMPtoPDFconversion=\toks21
-) <ALU.png, id=1, 315.42844pt x 512.66531pt>
+) <ALU.png, id=1, 240.9pt x 542.77782pt>
 File: ALU.png Graphic file (type png)
  <use ALU.png>
 Package pdftex.def Info: ALU.png used on input line 7.
-(pdftex.def)             Requested size: 227.62204pt x 369.95575pt.
+(pdftex.def)             Requested size: 227.62204pt x 512.87805pt.
  [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Colin/Documents/
-GitHub/CS4220-SP2014/3410proj/ALU.png>] <EXOVER.png, id=10, 800.23969pt x 535.2
-497pt>
-File: EXOVER.png Graphic file (type png)
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+Overfull \vbox (6.57243pt too high) has occurred while \output is active []
 
-<use EXOVER.png>
+
+[2 <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/DesignDoc/ALU.png>]
+<EXOVER.png, id=13, 1050.92625pt x 688.82344pt>
+File: EXOVER.png Graphic file (type png)
+ <use EXOVER.png>
 Package pdftex.def Info: EXOVER.png used on input line 13.
-(pdftex.def)             Requested size: 483.69684pt x 323.52896pt.
+(pdftex.def)             Requested size: 483.69684pt x 317.0413pt.
 
 Overfull \hbox (153.69684pt too wide) in paragraph at lines 13--14
 [][] 
  []
 
-<Forward1.png, id=11, 234.8775pt x 343.2825pt>
+[3 <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/DesignDoc/EXOVER.png
+>] <Forward1.png, id=18, 234.8775pt x 343.2825pt>
 File: Forward1.png Graphic file (type png)
  <use Forward1.png>
-Package pdftex.def Info: Forward1.png used on input line 18.
+Package pdftex.def Info: Forward1.png used on input line 19.
 (pdftex.def)             Requested size: 234.87692pt x 343.28165pt.
- [2 <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/EXOVER.png>]
-<Forward2.png, id=16, 519.44063pt x 328.97906pt>
+
+<Forward2.png, id=19, 584.93532pt x 264.99pt> [4 <C:/Users/Colin/Documents/GitH
+ub/CS4220-SP2014/3410proj/DesignDoc/Forward1.png>]
 File: Forward2.png Graphic file (type png)
  <use Forward2.png>
-Package pdftex.def Info: Forward2.png used on input line 21.
-(pdftex.def)             Requested size: 519.43936pt x 328.97826pt.
+Package pdftex.def Info: Forward2.png used on input line 22.
+(pdftex.def)             Requested size: 584.93388pt x 264.98935pt.
 
-Overfull \hbox (189.43936pt too wide) in paragraph at lines 21--23
+Overfull \hbox (254.93388pt too wide) in paragraph at lines 22--24
 [][]
  []
 
-[3 <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/Forward1.png>]
-<Immediate.png, id=22, 199.49532pt x 104.64093pt>
+<Immediate.png, id=25, 199.49532pt x 104.64093pt>
 File: Immediate.png Graphic file (type png)
  <use Immediate.png>
-Package pdftex.def Info: Immediate.png used on input line 25.
+Package pdftex.def Info: Immediate.png used on input line 26.
 (pdftex.def)             Requested size: 199.49481pt x 104.64066pt.
- [4 <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/Forward2.png>]
-<Code.png, id=27, 496.10344pt x 95.6072pt>
+
+<Code.png, id=26, 496.10344pt x 95.6072pt>
 File: Code.png Graphic file (type png)
  <use Code.png>
-Package pdftex.def Info: Code.png used on input line 29.
+Package pdftex.def Info: Code.png used on input line 30.
 (pdftex.def)             Requested size: 496.10222pt x 95.60695pt.
 
-Overfull \hbox (151.10222pt too wide) in paragraph at lines 29--31
+Overfull \hbox (151.10222pt too wide) in paragraph at lines 30--32
 []
  []
 
-<OUTPUT.png, id=28, 405.76593pt x 190.46156pt>
+[5 <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/DesignDoc/Forward2.p
+ng> <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/DesignDoc/Immediate
+.png>] <OUTPUT.png, id=32, 405.76593pt x 190.46156pt>
 File: OUTPUT.png Graphic file (type png)
  <use OUTPUT.png>
-Package pdftex.def Info: OUTPUT.png used on input line 33.
+Package pdftex.def Info: OUTPUT.png used on input line 34.
 (pdftex.def)             Requested size: 405.76494pt x 190.46107pt.
 
-Overfull \hbox (60.76494pt too wide) in paragraph at lines 33--35
+Overfull \hbox (60.76494pt too wide) in paragraph at lines 34--36
 []
  []
 
-[5 <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/Immediate.png> <C:/U
-sers/Colin/Documents/GitHub/CS4220-SP2014/3410proj/Code.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 37.
-
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 38.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 37.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 38.
+ [6 <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/DesignDoc/Code.png>
+ <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/DesignDoc/OUTPUT.png>]
 
-<MOV.png, id=34, 190.46156pt x 68.50594pt>
+<MOV.png, id=39, 190.46156pt x 68.50594pt>
 File: MOV.png Graphic file (type png)
  <use MOV.png>
-Package pdftex.def Info: MOV.png used on input line 44.
+Package pdftex.def Info: MOV.png used on input line 45.
 (pdftex.def)             Requested size: 190.46107pt x 68.50577pt.
- [6 <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/OUTPUT.png> <C:/Use
-rs/Colin/Documents/GitHub/CS4220-SP2014/3410proj/MOV.png>] [7]
-(C:\Users\Colin\Documents\GitHub\CS4220-SP2014\3410proj\ex.aux) ) 
+ [7 <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/DesignDoc/MOV.png>]
+ [8]
+(C:\Users\Colin\Documents\GitHub\CS4220-SP2014\3410proj\DesignDoc\ex.aux) ) 
 Here is how much of TeX's memory you used:
  1767 strings out of 493921
- 22480 string characters out of 3144876
+ 22550 string characters out of 3144876
  77360 words of memory out of 3000000
  5083 multiletter control sequences out of 15000+200000
  5612 words of font info for 21 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,4n,20p,592b,144s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Fi
-les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program File
-s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files 
-(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x8
-6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on ex.pdf (7 pages, 134998 bytes).
+ 27i,5n,20p,592b,175s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/
+Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Prog
+ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program
+ Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on ex.pdf (8 pages, 150997 bytes).
 PDF statistics:
- 59 PDF objects out of 1000 (max. 8388607)
+ 62 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

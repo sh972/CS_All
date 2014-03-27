@@ -237,9 +237,9 @@ Figure 9: Execute
 The Execute stage is where most of the computation within an instruction occurs.
 \subsection{Circuit Diagram}
 
-Our execute stage is all condensed into one subcircuit (with additional lower level circuits within the subcircuit). The subcircuit gets its inputs mainly from the ID/EX isolator but also from the EX/MEM and MEM/WB isolators for use in the forwarding unit. The two outputs of the subcircuit is the main output C, and the Write Enable for the Register File. 
+Our Execute stage is all condensed into a big Execute subcircuit, that does the computing, (with additional lower level circuits within the subcircuit) and a smaller subcircuit that aids in stalling. The Execute subcircuit gets its inputs mainly from the ID/EX registers but also from the EX/MEM and MEM/WB registers for use in the forwarding unit. The four outputs of the subcircuit is the main output C, the Write Enable for the Register File (which is conditional in the MOV instructions), a Jump variable, indicating whether or not we branch, and an output for Store functions. 
 
-The Execute subcircuit has many subcircuits of its own. For each of the main inputs, A and B, with respective register addresses rs and rt, there is a forwarding unit that resolves data hazard issues that are present in this Mini-Mips processor. There is a multiplexor for B that chooses between B and the immediate. There are special sections that implement the SLT, SLTI, SLTIU, SLTU, and the MOVZ, MOVN commands as well. There are a few multiplexors that choose between several possible outputs depending on the MIPS command.
+The Execute subcircuit has many subcircuits of its own. For each of the main inputs, A and B, with respective register addresses rs and rt, there is a forwarding unit that resolves data hazard issues that are present in this Mini-Mips processor. There is a multiplexor for B that chooses between B and the immediate. There are special sections that implement commands whose outputs do not come from the ALU. These commands include SLT, SLTI, SLTIU, and SLTU; MOVZ and MOVN; jumps and branches; and SW and SB. 
 \vspace{5mm}
 \begin{center}
 \includegraphics[width=15cm]{EXOVER.png} \\
