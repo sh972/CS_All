@@ -1,6 +1,10 @@
 # n is stored in $a0, A[] is stored in $a1, and s is stored in $a2
 
-ADDIU $a0, $0, 40
+ADDIU $t1, $0, 1160
+ADDIU $t2, $0, 8
+SW $t2, 0($t1)
+
+ADDIU $a0, $0, 160
 ADDIU $a1, $0, 1000
 ADDIU $a2, $0, 100
 ADDIU $ra, $0, 9000
