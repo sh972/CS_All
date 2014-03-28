@@ -69,37 +69,72 @@ Only 1 of the outputs from the second row of AND gates is 1 for any Comp Code. T
 The Comp Code for all other commands is 000, which makes the output of the subcircuit 1 regardless of the inputs. This is required so that Jump instructions always jump.(see (6.3))
 \end{itemize}
 
+Back in the Execute circuit, the Op code 1111 identifies the command as one of the SLT commands, and the MUX in (5.2) and the selector bit in (5.1) choose the zero extended Comparator output to be the final output. 
 
+\subsubsection{Jump and Branch}
+Jumps and Branches also require special computing. 
 
- The Op code 1111 identifies the command as one of the SLT commands.
+The branch conditionals are done in the Comparator (see above) which then turns off or maintains the Jump variable in (6.3). The target address for a branch is computed in the ALU. The PC in (6.1) is incremented by 4 and then chosen for in the MUX in (6.2) to be the first input of the ALU. 
 
-\subsubsection{Outputs}
-\includegraphics{OUTPUT.png}
-The output C out is by default rooted from the output C from the ALU. However, there are 2 multiplexors, M1 and M2, that select for the final output of the subcircuit. M1 corresponds to the commands MOVN and MOVZ; that is, if the ALU Op code is 1x01, the output will be the first main input A (after corrected by the forwarding unit) instead of the output C from the ALU. M3 corresponds to the commands SLT, SLTI, SLTU, SLTIU; that is, if the ALU Op code is 1111, the output will be determined in the section labeled SLT in the figure. 
-\begin{itemize}
-\item
-SLT: We use two comparators to do the SLT commands. For SLTU and SLTIU, we use the upper unsigned comparator, and for SLT and SLTI, we use the lower 2's complement comparator. We choose between the two outputs at multiplexor Y with a bit indicating whether the comparison is signed or not, Signed. Then the 1 bit output is sign extended to 32 bits. 
+The target address for a jump is computed in a separate subcircuit, which is done simply by using splitters. 
+\includegraphics{Jump.png}
 
-\item
-X: For the MOVN and MOVZ commands, we are comparing B against 0 instead of A. The lower input to the AND gate labeled X is just the original input coming from the Forwarding Unit. The upper input to X is either 32-bits of all 0's if the ALU Op code is 1x01 or all 1's otherwise. The wire leading out of X is therefore all 0's if the command is MOVN or MOVZ, and the original input otherwise.
+The subcircuit also chooses between the jump target address and the branch target address and address stored in a register depending on the related bits. 
 
-\end{itemize}
-\subsubsection{Write Enable for MOV}
-\includegraphics{MOV.png}
-The final piece of the circuit deals with the MOVN and MOVZ commands. Since these two only write based on the given condition, we modify the write enable (WE in) if the condition was not met and the command was MOVN or MOVZ to begin with. In our implementation, the lower lead in to the NAND gate is the truth value of the condition, coming from the ALU (negated), and the upper lead in indicates whether or not the command is MOVN or MOVZ. As such, the output of the NAND gate is true if either the command is not MOVx, or if the condition was true. 
+\subsubsection{Store Output}
+In (7.1), we simply output the input B which is stored in RAM in the instructions SW and SB.
+
+\subsubsection{LoadStall Disable}
+This small subcircuit in the main circuit simply disable the Jump variable, Load Enable, Register File Write Enable, and RAM Write Enable in the Execute stage during a stall. These 4 variables when all disabled effectively prevent the instruction from doing anything.
 
 \subsection{Correctness Constraints}
 \begin{itemize}
 \item The correctness of this module depends on the correctness of the inputs that are decoded in the Instruction Decode stage. Therefore, one functional requirement is that the inputs are consistent with the MIPS command given. For instance, WE in (write enable) must be 1 if the command ultimately writes back to the Register File. 
 \item The module takes inputs from the Memory and Write Back Stages. Therefore, these stages need to be implemented correctly in order for this stage to be correct.
-\item The execute subcircuit in this implementation is only correct for the instructions in Table A, and pseudo correct (set as NOPs) for the instructions in Table B. Only these instructions can be given in the Instruction Fetch Stage.
+\item The execute subcircuit in this implementation is only correct for the instructions in Table A and Table B. Only these instructions can be given in the Instruction Fetch Stage.
+\item There are also certain limitations on the ordering of instructions given, namely that a Jump or Branch cannot be given in the delay slot of another Jump or Branch. However this is a limitation on the whole circuit, not on the Execute stage itself.
 
 \end{itemize}
 
 \subsection{Testing}
 A large portion of the instructions depend on the correctness of the ALU circuit. Since that is given to us, we assume its correctness. For those instructions, computation is given correct, so we only have to test one case for each, that is, if one case gives us the correct nontrivial output (like 0 or something that could have been an accident), then the data path was correct and all inputs for that instruction should give us a correct output. 
 
-There are 6 functions that are not computed using the ALU: SLT, SLTU, SLTI, SLTIU, MOVN, and MOVZ. For these, we need to check an encompassing set of cases. Since all of these instructions involve a conditional, we check the cases for the conditionals, namely less than, greater than, and equal.
+For the function that are not computed solely using the ALU, we need to check an encompassing set of cases. Many of the Table B instructions' correctnesses are not solely dependent on the execute stage, but the overall testing for those instructions will be mentioned here. Load and Store will be elaborated more in Memory.
+
+For the SLT, MOV, and Branch instructions, we check all the cases for the conditionals, namely less than, greater than, and equal. For branches we need to check if the delay slot works properly and if the instruction after the delay slot is canceled properly. We also check if branching with both negative and positive offsets work properly.
+
+For the Jump instructions, we check if the delay slot works properly and if the instruction after the delay slot is canceled properly, as in the Branch tests. The register Jumps also need to be tested, and we have to check if the link address is stored properly in JAL and JRAL. 
+
+Load and Store only have their addresses computed in the ALU in the Execute stage, which is trivial. The bulk of their correctness is dependent on the Memory stage.
 
 Lastly, we need to test the forwarding unit. We need to test for EX/MEM $\rightarrow$ EX forwarding and MEM/WB $\rightarrow$ EX forwarding. We test with multiple cases to be safe. 
+
+\section{Memory}
+\subsection{Circuit Diagram}
+\includegraphics[width=8cm]{MemOver.png}
+
+Our Memory stage has 3 main subcircuits:
+
+ The Memory Helper processes the outputs from the Execute stage to give us the Byte Selector, the 20 bit Memory Address, and the RAM input. 
+ 
+ The Byte Extract, much as the name suggests, extracts the byte from RAM output in LB and LBU instructions, and does nothing otherwise.
+ 
+ The Linking Helper processes outputs from the Execute stage to set rd to 31 and choose the address to be written. 
+ 
+ There is also a MUX that chooses for the RAM output if the Load Enable is on.
+ 
+\subsubsection{Memory Helper}
+\includegraphics{MemHelp.png}
+The first output in the Memory Helper is the Write Address A (1.1). This is acquired by simply extracting bits 2-21 from the main Execute output C. 
+
+The second output is the RAM input (1.3). This is either the original Write in if the instruction is SW or its first byte replicated 4 times if the instruction is SB. ("Byte in" indicated whether the memory instruction is Word(0) or Byte (1)) 
+
+The final output is the Byte Select. The AND gates in (1.2) extract from the first 2 bits of "C in" the Byte information. Only one of the AND gates can output 1 at a time, so our Byte Select is for the most part limited to one of 0001, 0010, 0100, and 1000, which is what we want. The exception to this rule is when the instruction isn't a Byte instruction, in which case the Byte Select is 1111, which we get by using an OR gate with the negation of "Byte in", sign extended. 
+
+\subsubsection{Byte Extract}
+\includegraphics{ByteExtract.png} 
+ The Byte Extract, much as the name suggests, extracts the byte from RAM output in LB and LBU instructions, and does nothing otherwise.
+ 
+ From the MUX in (1.1), the 
+
 \end{document}

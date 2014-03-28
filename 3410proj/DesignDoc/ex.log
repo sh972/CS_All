@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.1.26)  27 MAR 2014 22:05
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.1.26)  27 MAR 2014 23:12
 entering extended mode
 **ex.tex
 (C:\Users\Colin\Documents\GitHub\CS4220-SP2014\3410proj\DesignDoc\ex.tex
@@ -225,41 +225,41 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 63.
 
 [7 <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/DesignDoc/Compare.pn
-g>] <OUTPUT.png, id=42, 405.76593pt x 190.46156pt>
-File: OUTPUT.png Graphic file (type png)
- <use OUTPUT.png>
-Package pdftex.def Info: OUTPUT.png used on input line 77.
-(pdftex.def)             Requested size: 405.76494pt x 190.46107pt.
+g>] <Jump.png, id=42, 451.6875pt x 255.95625pt>
+File: Jump.png Graphic file (type png)
+ <use Jump.png>
+Package pdftex.def Info: Jump.png used on input line 80.
+(pdftex.def)             Requested size: 451.68639pt x 255.95561pt.
 
-Overfull \hbox (60.76494pt too wide) in paragraph at lines 77--79
-[]
+Overfull \hbox (240.17738pt too wide) in paragraph at lines 79--81
+\OT1/cmr/m/n/10 done sim-ply by us-ing split-ters. [] 
  []
 
-[8 <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/DesignDoc/OUTPUT.png
->] <MOV.png, id=47, 190.46156pt x 68.50594pt>
-File: MOV.png Graphic file (type png)
- <use MOV.png>
-Package pdftex.def Info: MOV.png used on input line 88.
-(pdftex.def)             Requested size: 190.46107pt x 68.50577pt.
- [9 <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/DesignDoc/MOV.png>]
+[8] [9 <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/DesignDoc/Jump.p
+ng>] <MemOver.png, id=50, 276.28218pt x 310.15875pt>
+File: MemOver.png Graphic file (type png)
+ <use MemOver.png>
+Package pdftex.def Info: MemOver.png used on input line 114.
+(pdftex.def)             Requested size: 227.62204pt x 255.52917pt.
  [10]
-(C:\Users\Colin\Documents\GitHub\CS4220-SP2014\3410proj\DesignDoc\ex.aux) ) 
+[11 <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/DesignDoc/MemOver.p
+ng>] (C:\Users\Colin\Documents\GitHub\CS4220-SP2014\3410proj\DesignDoc\ex.aux) 
+) 
 Here is how much of TeX's memory you used:
  1772 strings out of 493921
- 22654 string characters out of 3144876
+ 22664 string characters out of 3144876
  77360 words of memory out of 3000000
  5087 multiletter control sequences out of 15000+200000
  5612 words of font info for 21 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,6n,20p,594b,173s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/
-Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
-ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Prog
-ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program
- Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on ex.pdf (10 pages, 162212 bytes).
+ 27i,6n,20p,594b,175s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><
+C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:
+/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on ex.pdf (11 pages, 183922 bytes).
 PDF statistics:
- 69 PDF objects out of 1000 (max. 8388607)
+ 72 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
