@@ -1,39 +1,224 @@
+# *Each doublestarred comment represents a new section.
+# **Tests for each of the Table A Instructions. Forwarding is used throughout with variation.
+
+# Generic tests for ADDIU and ADDU. 2 step and 1 step forwarding tested as well.
 ADDIU $2, $0, 2		# R2 = 2
 ADDIU $3, $0, 7		# R3 = 7
 ADDU $4, $2, $3		# R4 = 9
+
+# Each of the MOV instructions are tested for True and False conditionals, and with 1 step, 2 step, and no forwarding.
 MOVN $5, $4, $2		# R5 = 9
 MOVN $6, $4, $1		# No change
 MOVZ $7, $4, $0		# R7 = 9
 MOVZ $8, $4, $4		# No change
+
+# Generic tests for ANDI, ORI, and XORI. 1 step (overriding 2 step), 1 step, 2 step forwarding is included.
 ANDI $2, $0, 0		# R2 = 0
 ADDIU $2, $0, -1	# R2 = ffffffff
 ANDI $3, $2, 73		# R3 = 49
 ORI $3, $2, 0		# R3 = ffffffff
 XORI $4, $2, 0		# R4 = ffffffff
 XORI $5, $4, 16		# R5 = ffffffef
+
+# Each of the SLTI instructions are tested for True and False conditionals. No forwarding.
 SLTI $11, $7, 9		# R11 = 0
 SLTI $11, $7, 11 	# R11 = 1
 SLTIU $2, $3, 0 	# R2 = 0
 SLTIU $2, $7, 12 	# R2 = 1
+
+# Generic test for SUBU. Double forwarding (1 step + 2 step) used. 
 ADDIU $2, $0, 2		# R2 = 2
 ADDIU $3, $0, 7		# R3 = 7
 SUBU $16, $3, $2 	# register 16 = 5
 SUBU $17, $16, $2 	# register 17 = 3
+
+# Generic tests for AND OR XOR NOR. Double forwarding, 2 step forwarding, no forwarding, tested.
 AND $18, $16, $17 	# register 18 = 1
 OR $19, $16, $17 	# register 19 = 7
 XOR $20, $16, $17 	# register 20 = 6
 NOR $21, $16, $17 	# register 21 = fffffff8
+
+# Tests for SLT and SLTU. Instructions are tested for True and False conditionals. 1 step forwarding. 
 ADDIU $22, $0, -8       # register 22 = fffffff8
 SLT $23, $22, $20 	#register 23 = 1
 SLT $24, $20, $21 	#register 24 = 0
 SLTU $25, $22, $20 	#register 25 = 0
 SLTU $26, $20, $21 	#register 26 = 1
-SLL $24, $23, 31	#register 24 = 80000000
+
+# Tests for Shifting. 
+SLL $24, $23, 31	# R24 = 80000000
 SRA $24, $24, 16	# R24 = ffff8000
 SRL $24, $24, 4		# R24 = 0ffff800
 SLLV $24, $24, $2	# R24 = 3fffe000
 SLL $25, $26, 31	# R25 = 80000000
 SRAV $25, $25, $3	# R25 = ff000000
 SRLV $25, $25, $3	# R25 = 01fe0000
+
+# Short test for LUI
 LUI $26, 9		# R26 = 00090000
+
+# Final test just for good measure
 SLTI $31, $3, 10	# R31 = 00000001
+
+
+
+# **Tests for branching. All possible conditionals are tested as well as positive and negative offsets.
+#Altogether BGTZ, BLTZ, BLEZ, BGEZ are tested 3 times each, with -1, 1, and 0, and BEQ and BNE are tested 2 times each.
+ADDIU $1, $0, 1
+ADDIU $3, $0, 1
+ADDIU $2, $0, -1
+ADDIU $4, $0, -1
+
+# None of the next branches should branch. If they do branch, Register 3 and 4 are reset to 0. 
+# If not, "J 96" jumps past the instructions that reset Register 3 and 4.
+BEQ $0, $1, 72
+NOP
+BNE $1, $3, 64 # Instr 24
+NOP
+BLEZ $3, 56
+NOP
+BGTZ $0, 48
+NOP
+BGTZ $2, 40
+NOP
+BLTZ $0, 32
+NOP
+BLTZ $1, 24
+NOP
+BGEZ $4, 16 # Instr 72
+NOP 
+J 96 # Jumps past the next 3 instructions, which reset $3 and $4 to 0.
+NOP
+ADDIU $4, $4, 1
+ADDIU $3, $3, -1
+
+# All of the next branch instructions should branch. If they do not branch, Register 5 is incremented.
+# There are instructions included in the delay slots as well. Register 6 should be incremented each time, totalling 8
+BEQ $2, $2, 12		# 1 Jumps to 2
+ADDIU $6, $6, 1
+ADDIU $5, $5, 1
+NOP
+BNE $1, $2, 28 		# 2 Jumps to 4
+ADDIU $6, $6, 1
+ADDIU $5, $5, 1
+NOP
+BLEZ $0, 28		# 3 Jumps to 5
+ADDIU $6, $6, 1
+ADDIU $5, $5, 1
+NOP
+BLEZ $2, -20		# 4 Jumps to 3
+ADDIU $6, $6, 1
+ADDIU $5, $5, 1
+NOP
+BGTZ $1, 12		# 5 Jumps to 6
+ADDIU $6, $6, 1
+ADDIU $5, $5, 1
+NOP
+BLTZ $2, 12		# 6 Jumps to 7
+ADDIU $6, $6, 1
+ADDIU $5, $5, 1
+NOP
+BGEZ $0, 12		# 7 Jumps to 8
+ADDIU $6, $6, 1
+ADDIU $5, $5, 1
+NOP
+BGEZ $1, 12		# 8 Jumps to end
+ADDIU $6, $6, 1
+ADDIU $5, $5, 1
+
+
+
+# **Jump tests.
+# If the Jumps work correctly, the program should run infinitely and $1 should increment with each full loop, while $2 = 10 (16), $3 = 7, $4 = 8, $5 = 2, $6 = 0, $7 = 34 (52)
+# We note that getting hailstone to work is testing in and of itself, especially of memory and linking.
+
+	ADDIU $1, $0, 5
+
+# Jumps to Jump1. $6 should not change to 6, as the instruction should be canceled. $1 should remain at 5, and $2 should be equal c. 
+	J Jump1			# $1 = 5, $2 = c, $3 = 0
+	NOP
+	ADDIU $6, $0, 6
+Jump0:	ADDIU $3, $0, 7
+
+# Jump and link should link PC+8, or the instruction two ahead. Uses the delay slot, which increments $1. 
+	JAL Jump2
+	ADDIU $1, $1, 1
+
+Jump1: 	ADDIU $2, $0, 16
+
+# Jumps to Jump0. Delay Slot is used.
+	JR $2			# $3 = 7, $4 = 8
+	ADDIU $4, $0, 8
+
+Jump2: 	ADDIU $5, $0, 2
+
+# Jumps back to Jump1, which was linked by JAL. Delay Slot used to store $ra from JALR.
+	JALR $ra
+	ADDIU $7, $ra, 0
+
+
+
+# **Tests for Load and Store and Stalling.
+
+ADDIU $16, $0, 4
+ADDIU $16, $16, 3
+
+# These three instructions test SW for positive, negative and 0 offsets, and with 2 step forwarding, 1 step (override 2 step) forwarding, and no forwarding.
+SW $16, 8($0) 		# R00002 <- 00000007
+SW $16, -3($16)		# R00001 <- 00000007
+SW $16, 0($0)		# R00000 <- 00000007
+
+ADDIU $17, $0, 1
+ADDIU $17, $17, 3
+
+# These four instructions test SB for each byte location, for positive and negative offsets, and for 2 step, 1 step (override 2 step) and no forwarding.
+SB $17, 11($0) 		# R00002 <- 04000007
+SB $17, -1($16)		# R00001 <- 00040007
+SB $16, 1($0)		# R00000 <- 00000707
+SB $16, 5($16)		# R00003 <- 00000007
+
+ADDIU $16, $0, 8
+
+# This tests generic LW with 1 step forwarding
+LW $17, 4($16) 		# $17 <- 00000007
+
+# These two test forwarding with stall, as well as loading with negative offset.
+LW $17, -3($17)		# $17 <- 00040007 
+SRA $17, $17, 16	# $17 <- 00000004
+
+ADDIU $18, $0, -1
+SB $18, 16($0)		# R00004 <- 000000ff
+ADDIU $18, $0, -2
+SB $18, 17($0)		# R00004 <- 0000feff
+ADDIU $18, $0, -3
+SB $18, 18($0)		# R00004 <- 00fdfeff
+ADDIU $18, $0, -4
+SB $18, 19($0)		# R00004 <- fcfdfeff
+ADDIU $18, $0, 1
+SB $18, 20($0)		# R00005 <- 00000001
+ADDIU $18, $0, 2
+SB $18, 21($0)		# R00005 <- 00000201
+ADDIU $18, $0, 3
+SB $18, 22($0)		# R00005 <- 00030201
+ADDIU $18, $0, 4
+SB $18, 23($0)		# R00005 <- 04030201
+
+# These eight instructures test LB for each byte location and positive and negative bytes.
+LB $19, 16($0)		# $19 <- ffffffff
+LB $20, 17($0)		# $20 <- fffffffe
+LB $21, 18($0)		# $21 <- fffffffd
+LB $22, 19($0)		# $22 <- fffffffc
+LB $23, 20($0)		# $23 <- 00000001
+LB $24, 21($0)		# $24 <- 00000002
+LB $25, 22($0)		# $25 <- 00000003
+LB $26, 23($0)		# $26 <- 00000004
+
+# These eight instructures test LBU for each byte location and positive and negative bytes.
+LBU $18, 16($0)		# $18 <- 000000ff
+LBU $19, 17($0)		# $19 <- 000000fe
+LBU $20, 18($0)		# $20 <- 000000fd
+LBU $21, 19($0)		# $21 <- 000000fc
+LBU $22, 20($0)		# $22 <- 00000001
+LBU $23, 21($0)		# $23 <- 00000002
+LBU $24, 22($0)		# $24 <- 00000003
+LBU $25, 23($0)		# $25 <- 00000004

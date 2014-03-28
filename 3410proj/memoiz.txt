@@ -1,9 +1,13 @@
-# n is stored in $a0, A[] is stored in $a1, and s is stored in $a2
+# We set the initial return address to 9000, way out of the bounds of our program. Once this program jumps to 9000, and only performs NOP instructions, $v0 = $2 = 10. 
+# We expect the program to converge quickly because we set A[40] to 8 before the program starts. 
+# If we look at the RAM we also expect A[80] (1320) to be stored and A[160] to not be stored (1640).  
 
+# Sets A[40] = 8. 
 ADDIU $t1, $0, 1160
 ADDIU $t2, $0, 8
 SW $t2, 0($t1)
 
+# Sets n = 160, A = 1000, s = 100
 ADDIU $a0, $0, 160
 ADDIU $a1, $0, 1000
 ADDIU $a2, $0, 100

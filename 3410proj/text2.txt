@@ -1,7 +1,9 @@
+# **Tests for branching. All possible conditionals are tested as well as positive and negative offsets.
 ADDIU $1, $0, 1
 ADDIU $3, $0, 1
 ADDIU $2, $0, -1
 ADDIU $4, $0, -1
+
 # None of the next branches should branch. If they do branch, Register 3 and 4 are reset to 0. 
 # If not, "J 96" jumps past the instructions that reset Register 3 and 4.
 BEQ $0, $1, 72
@@ -24,6 +26,7 @@ J 96 # Jumps past the next 3 instructions, which reset $3 and $4 to 0.
 NOP
 ADDIU $4, $4, 1
 ADDIU $3, $3, -1
+
 # All of the next branch instructions should branch. If they do not branch, Register 5 is incremented.
 # There are instructions included in the delay slots as well. Register 6 should be incremented each time, totalling 8
 BEQ $2, $2, 12		# 1 Jumps to 2

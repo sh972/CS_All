@@ -60,17 +60,3 @@ LBU $22, 20($0)		# $22 <- 00000001
 LBU $23, 21($0)		# $23 <- 00000002
 LBU $24, 22($0)		# $24 <- 00000003
 LBU $25, 23($0)		# $25 <- 00000004
-
-LW $17, 4($0)		#Tests load word and store word, $16 = $17 = 7
-ADDU $18, $17, $0 	#Tests forwarding with stalling after load, $18 = 7
-LW $19, 4($0)		#Tests loading without stalling
-ADDIU $16, $16, 1
-ADDIU $16, $16, 1	#Incrementing $16 by 1, $16 = 9
-SW $16, 3($16)		
-LW $20, 3($16)		#Tests forwarding to store address & value
-ADDIU $21, $21, -2
-SB $21, 10($0)		#Stores 0xfe to byte 10
-LB $22, 10($0)		#Loads byte signed to $22 , $22 = 0xfffffffe
-LBU $23, 10($0)		#Loads byte unsigned to $23 , $23 = 0x000000fe
-LB $24, 4($0)		#Loads byte signed to $24 	, $24 = 0x00000007
-LBU $25, 4($0)		#Loads byte undsigned to $25 , $25 = 0x00000007
