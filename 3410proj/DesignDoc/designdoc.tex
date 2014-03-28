@@ -243,8 +243,11 @@ The Execute subcircuit has many subcircuits of its own. For each of the main inp
 \vspace{5mm}
 \begin{center}
 \includegraphics[width=15cm]{EXOVER.png} \\
-Figure 10: Execute (subcircuit)
+Figure 10: Execute (Refer to this diagram for many of the subcomponents)
 \end{center}
+
+\subsubsection{General Purpose ALU}
+The ALU (1.3) provides us the output for many of the simpler commands, and also provides us some intermediate outputs for the more specialized commands. Inputs A and B are determined by the specified command, but here we take them as given. We get the Op Code for the ALU as an input (1.1), and the SA is determined in a subcircuit (1.2), depending on whether or not the shift command was variable. 
 
 \subsubsection{Forwarding Unit}
 \begin{wrapfigure}{r}{0.27\textwidth}

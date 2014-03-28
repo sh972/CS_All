@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.1.26)  27 MAR 2014 19:38
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.1.26)  27 MAR 2014 21:37
 entering extended mode
 **ex.tex
 (C:\Users\Colin\Documents\GitHub\CS4220-SP2014\3410proj\DesignDoc\ex.tex
@@ -190,64 +190,76 @@ Overfull \hbox (254.93388pt too wide) in paragraph at lines 22--24
 <Immediate.png, id=25, 199.49532pt x 104.64093pt>
 File: Immediate.png Graphic file (type png)
  <use Immediate.png>
-Package pdftex.def Info: Immediate.png used on input line 26.
+Package pdftex.def Info: Immediate.png used on input line 30.
 (pdftex.def)             Requested size: 199.49481pt x 104.64066pt.
+ [5 <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/DesignDoc/Forward2.
+png>]
+<Immediate2.png, id=30, 175.40532pt x 111.41624pt>
+File: Immediate2.png Graphic file (type png)
+ <use Immediate2.png>
+Package pdftex.def Info: Immediate2.png used on input line 33.
+(pdftex.def)             Requested size: 175.40488pt x 111.41597pt.
 
-<Code.png, id=26, 496.10344pt x 95.6072pt>
-File: Code.png Graphic file (type png)
- <use Code.png>
-Package pdftex.def Info: Code.png used on input line 30.
-(pdftex.def)             Requested size: 496.10222pt x 95.60695pt.
+Overfull \hbox (0.2928pt too wide) in paragraph at lines 33--35
+[][] \OT1/cmr/m/n/10 The lower MUX de-ter-mines the sec-
+ []
 
-Overfull \hbox (151.10222pt too wide) in paragraph at lines 30--32
+<Compare.png, id=31, 882.29625pt x 349.305pt>
+File: Compare.png Graphic file (type png)
+ <use Compare.png>
+Package pdftex.def Info: Compare.png used on input line 44.
+(pdftex.def)             Requested size: 882.2941pt x 349.30414pt.
+
+Overfull \hbox (537.2941pt too wide) in paragraph at lines 44--46
 []
  []
 
-[5 <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/DesignDoc/Forward2.p
-ng> <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/DesignDoc/Immediate
-.png>] <OUTPUT.png, id=32, 405.76593pt x 190.46156pt>
+[6 <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/DesignDoc/Immediate.
+png> <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/DesignDoc/Immediat
+e2.png>] <OUTPUT.png, id=36, 405.76593pt x 190.46156pt>
 File: OUTPUT.png Graphic file (type png)
  <use OUTPUT.png>
-Package pdftex.def Info: OUTPUT.png used on input line 34.
+Package pdftex.def Info: OUTPUT.png used on input line 63.
 (pdftex.def)             Requested size: 405.76494pt x 190.46107pt.
 
-Overfull \hbox (60.76494pt too wide) in paragraph at lines 34--36
+Overfull \hbox (60.76494pt too wide) in paragraph at lines 63--65
 []
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 38.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+[7 <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/DesignDoc/Compare.pn
+g>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 67.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 38.
- [6 <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/DesignDoc/Code.png>
- <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/DesignDoc/OUTPUT.png>]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 67.
 
-<MOV.png, id=39, 190.46156pt x 68.50594pt>
+<MOV.png, id=42, 190.46156pt x 68.50594pt>
 File: MOV.png Graphic file (type png)
  <use MOV.png>
-Package pdftex.def Info: MOV.png used on input line 45.
+Package pdftex.def Info: MOV.png used on input line 74.
 (pdftex.def)             Requested size: 190.46107pt x 68.50577pt.
- [7 <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/DesignDoc/MOV.png>]
- [8]
+ [8 <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/DesignDoc/OUTPUT.pn
+g> <C:/Users/Colin/Documents/GitHub/CS4220-SP2014/3410proj/DesignDoc/MOV.png>] 
+[9]
 (C:\Users\Colin\Documents\GitHub\CS4220-SP2014\3410proj\DesignDoc\ex.aux) ) 
 Here is how much of TeX's memory you used:
- 1767 strings out of 493921
- 22550 string characters out of 3144876
+ 1772 strings out of 493921
+ 22654 string characters out of 3144876
  77360 words of memory out of 3000000
- 5083 multiletter control sequences out of 15000+200000
+ 5087 multiletter control sequences out of 15000+200000
  5612 words of font info for 21 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,5n,20p,592b,175s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,6n,20p,594b,167s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/
 Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Prog
 ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program
  Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on ex.pdf (8 pages, 150997 bytes).
+Output written on ex.pdf (9 pages, 160191 bytes).
 PDF statistics:
- 62 PDF objects out of 1000 (max. 8388607)
+ 66 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

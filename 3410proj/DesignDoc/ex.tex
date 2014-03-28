@@ -20,15 +20,44 @@ The ALU (1.3) provides us the output for many of the simpler commands, and also 
 This part of the circuit compares the register address (rs) of a main input (Out0) with the write destinations of the instruction in the next stage (rd1) and the stage after that (rd2). Out1 and Out2 are to be written in those destinations respectively. The write enable bits from those stages need to be included as well. The Forwarding Unit takes these 8 inputs and chooses one of the 3 32-bit outputs Out0, Out1, Out2. Figure 11 shows the layout of the Forwarding Unit and its inputs in the Execute circuit.
 
 \includegraphics{Forward2.png}
-The Forwarding Unit compares the register addresses using an XOR and a NOR gate, to get a multiplexor selector, that is, if the register addresses are equal, we get 1, and otherwise 0. This is ANDed with a write enable bit. This is done for each rs and rd1, and rs and rd2. We first choose between Out0 and Out2 by comparing rs and rd2, then the selected and Out1 by comparing rs and rd1. This process automatically gives Out1 higher priority than Out2; if all of rs, rd1, and rd2 are equal, Out1 will be chosen over Out2. 
+The Forwarding Unit compares the register addresses using an XOR and a NOR gate to get a multiplexor selector, that is, if the register addresses are equal, we get 1, and otherwise 0. Additionally, the current register address must not be 00000. This is ANDed with a write enable bit. This is done for each rs and rd1, and rs and rd2. We first choose between Out0 and Out2 by comparing rs and rd2, then the selected and Out1 by comparing rs and rd1. This process automatically gives Out1 higher priority than Out2; if all of rs, rd1, and rd2 are equal, Out1 will be chosen over Out2. 
+
+Load Forward (2.3) simply computes whether the previous instruction's register address (rd) is the same as the current instruction's rs or rt. This output is used later on in stalling for LW forwarding.
 
 \subsubsection{Immediate Mux}
-\includegraphics{Immediate.png}
-This small section of the Execute circuit just chooses between Immediate and the second main input B. The Immediate is already bit extended to 32 bits, and our Decoder gives us a multiplexor selector bit ImmMux that we use here. 
+This section (3.1) determines which of input B or the Immediate become an input for the ALU and the Comparators.
 
-\subsubsection{Special Command Determination}
-\includegraphics{Code.png}
-These 2 and gates explictly look for certain ALU Op codes. The Op code 1111 identifies the command as one of the SLT commands while the Op code 1x01 identifies the command as MOVN or MOVZ. We use these bits specially for executing these commands correctly in other parts of the circuit.
+\includegraphics{Immediate.png}
+The upper MUX determines the second input of the ALU. The Immediate is already bit extended to 32 bits, and our Decoder gives us a multiplexor selector bit ImmMux that we use here. 
+
+\includegraphics{Immediate2.png}
+The lower MUX determines the second input of the Comparators. The difference between this MUX and the upper MUX is that the MUX will choose input B if the command is a Branch command, overriding the ImmMux. 
+
+\subsubsection{MOVN/MOVZ}
+MOVN and MOVZ are one of the sets of commands that require special attention. The large AND gate in (4.1) outputs 1 if the ALU Op code is 1x01. Directly right of the AND gate is a subcomponent that disables the Register Write Enable if the ALU returns 0 for the comparison. 
+
+The AND gate in (4.3) replaces input A with a 32-bits of all 0's if the command is MOVN or MOVZ. This is because these commands' conditionals compare against zero. 
+
+Finally the output that is eventually stored if the conditional is true is the input A. Our MUX in (4.2) does exactly that, choosing input A over the ALU output C if the selector bit is 1.
+
+\subsection{Comparator}
+\includegraphics{Compare.png}
+The Comparators (5.3) is used for the SLT commands and the branch commands. The upper comparator is unsigned and used for the commands SLTU and SLTIU. 
+
+We use a Comp Code that tells us the exact comparison that we want. 
+
+\begin{tabular}{| c | c |}
+\hline 
+LEZ & 100 \\ \hline
+LTZ & 101 \\ \hline
+GEZ & 110 \\ \hline
+GTZ & 111 \\ \hline
+SLT & 001 \\ \hline
+EQ &  010 \\ \hline
+NE &  011 \\ \hline
+\end{tabular}
+
+ The Op code 1111 identifies the command as one of the SLT commands.
 
 \subsubsection{Outputs}
 \includegraphics{OUTPUT.png}
