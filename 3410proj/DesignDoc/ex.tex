@@ -40,7 +40,7 @@ The AND gate in (4.3) replaces input A with a 32-bits of all 0's if the command 
 
 Finally the output that is eventually stored if the conditional is true is the input A. Our MUX in (4.2) does exactly that, choosing input A over the ALU output C if the selector bit is 1.
 
-\subsection{Comparator}
+\subsubsection{Comparator}
 \includegraphics{Compare.png}
 The Comparators (5.3) is used for the SLT commands and the branch commands. The upper comparator is unsigned and used for the commands SLTU and SLTIU. 
 
@@ -56,6 +56,20 @@ SLT & 001 \\ \hline
 EQ &  010 \\ \hline
 NE &  011 \\ \hline
 \end{tabular}
+
+\textbf{Design Decisions}
+\begin{itemize}
+\item
+We set all the Comp Codes for comparisons with 0 to 1xx, so we sign extend the negation of the most significant bit of the Comp Code to control the second input to the comparators. 
+\item
+We represent GE and LE as the negation of LT and GT respectively and that can be seen in the first row of AND gates under the second comparator.
+\item
+Only 1 of the outputs from the second row of AND gates is 1 for any Comp Code. That means only 1 of the outputs from the first row of AND gates can be 1, and the big OR gate will output 0 unless that specified comparison is true. 
+\item
+The Comp Code for all other commands is 000, which makes the output of the subcircuit 1 regardless of the inputs. This is required so that Jump instructions always jump.(see (6.3))
+\end{itemize}
+
+
 
  The Op code 1111 identifies the command as one of the SLT commands.
 
