@@ -157,6 +157,8 @@ Our Jump also disables the same 4 variables, but in the Decode Stage, which is t
 \begin{itemize}
 \item
 Assuming all preceding stages are correct, the main constraint for the Memory Stage is the RAM Write Address has to be a valid word address if the associated memory instruction is a word instruction. Technically our circuit would treat the address as if the first two bits indicating bytes were 0s. We don't have a method to call an error, thus we are limited in this way.
+\item
+Another constraint arises from the fact that our RAM only supports 20 bit word addresses, so the base + offset in our memory instructions can be at most 22 bits long. Practically, the other 10 bits don't have to be 0s, but the range that the ROM sets RAM addresses must be within 22 bits. For this project, we assume that RAM addresses are between 00000000 and 000fffff. 
 \end{itemize}
 
 \subsection{Testing}
@@ -164,10 +166,14 @@ Testing for the Memory Stage is essentially testing memory instructions.
 
 Load Word is tested by storing a word first, then loading it into the register file, so it makes sense to test Store Word first.
 
-Testing storing word basically 
+Testing Store Word is basically checking if the word is stored, and if it is stored in the right address. Similarly Store Byte is tested by checking if the least significant byte is stored in the right byte address. We test the byte addressing for each possible Byte Select (0001, 0010, 0100, 1000). The memory address calculation is assumed to be correct from the Execute Stage. 
 
-The main thing we need to check for the Load instructions is whether or not the Stall works properly. We make sure that 1 step forwarding stalls properly. We also make sure that 2 step forwarding does not stall and that non forwarded Load instructions don't stall. 
+Additionally we test Store Word with multiple forwarding instances.
 
-T  
+For Load Word when we check if the correct value is loaded, the word just has to match the word in the RAM. Load Byte we also want to make sure that the correct byte is extracted and that it is in the least significant bits, and that it is sign extended correctly. Load Byte Unsigned is the same as Load Byte except we need to make sure that it is always zero extended.
+
+Other than the main output, we need to check whether or not the Stall works properly. We make sure that 1 step forwarding stalls properly. We also make sure that 2 step forwarding does not stall and that non forwarded Load instructions don't stall. 
+
+Jumping is mentioned above in the Execute Stage Testing.
 
 \end{document}
