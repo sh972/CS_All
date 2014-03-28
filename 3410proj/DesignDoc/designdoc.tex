@@ -10,7 +10,7 @@
 \author{Stern Huang (sh972) \& Colin Huang (ch645)}
 \maketitle
 \section{Introduction}
-This is a design document for the \textbf{Project 1: Pipelined Mini-MIPS} of CS 3410 (Spring 2014). In it, we will be describing our mini processor is implemented. This document is intended for the instructors of CS 3410 to read and and better understand how our circuits work. \\
+This is a design document for the \textbf{Project 2: Fully Pipelined MIPS} of CS 3410 (Spring 2014). In it, we will be describing our mini processor is implemented. This document is intended for the instructors of CS 3410 to read and and better understand how our circuits work. \\
 
 \section{Overview}
 \begin{center}
@@ -18,33 +18,36 @@ This is a design document for the \textbf{Project 1: Pipelined Mini-MIPS} of CS 
 Figure 1: Pipeline
 \end{center}
 \newpage
-Creating the processor will consist of implementing 4 major pieces: \\
+Creating the processor will consist of implementing 5 major pieces: \vspace{-3mm}\\ 
 \begin{wrapfigure}{r}{0.35\textwidth}
 \vspace{-1.7cm}
 \begin{center}
-\includegraphics[scale=0.55]{isolator23.png} \\
-Figure 2: Decode-Execute Isolator
+\includegraphics[scale=0.55]{isolator34.png} \\
+Figure 2: Execute-Memory Isolator
 \end{center}
 \vspace{-1.5cm}
 \end{wrapfigure}
 \vspace{-0.7cm}
 \begin{enumerate}
 \item
-\textbf{Decoding}: We must decode an instruction given by the Program ROM. This will tell the the register and the memory when to write, and the ALU what operation to perform. Various other bits will be outputted as well, which will be further explained in \textbf{Section 4}.
+\textbf{Pipeline Structure}: The implementation of a pipeline (Figure 1) requires the use of a clock as well as several registers to move data between different sections of the pipeline. We will refer to these as "\textbf{Isolators}" (Figure 2), as they isolate the various stages. Pipelining will be further explained in \textbf{Section 2.1}.
 
 \item
-\textbf{Pipeline Structure}: The implementation of a pipeline (Figure 1) requires the use of a clock as well as several registers to move data between different sections of the pipeline. We will refer to these as "\textbf{Isolators}" (Figure 2), as they isolate the various stages. Pipelining will be further explained in \textbf{Section 2.1}.
+\textbf{Decoding}: We must decode an instruction given by the Program ROM. This will tell the the register and the memory when to write, and the ALU what operation to perform. Various other bits will be outputted as well, which will be further explained in \textbf{Section 4}.
 
 \item
 \textbf{Execution}: The instructions that must be implemented are far more complicated than what a simple ALU is capable of. In order to carry out those instructions, we will create a larger Execute circuit, in which we use the ALU to perform specific operations. The Execute circuit will be further explained in \textbf{Section 5}.
 
 \item
-\textbf{Testing}: In order to test the functionality of our processor, we will write a program using the MIPS language and input it into the ROM. The program will use each operation that we needed to implement at least once. If the result is the expected result, we can conclude that our implementation of the processor is correct.
+\textbf{Memory and Writeback}: After Execution, we will have to direct the computed value to where it needs to be used. This is usually the Memory or Writeback stage, but is also sometimes the Fetch stage. The Memory and Writeback implementation will be futher explained in \textbf{Section 6 and 7}.
+
+\item
+\textbf{Testing}: In order to test the functionality of our processor, we will write a program using the MIPS language and input it into the ROM. If the result is the expected result, we can conclude that our implementation of the processor is correct.
 \end{enumerate}
 
 \subsection{Circuit Diagram}
 \begin{center}
-\includegraphics[scale=0.6]{Overview.png}
+\includegraphics[scale=0.4]{Overview.png} \\
 Figure 3: MIPS32 Circuit
 \end{center}
 The processor pipeline consists of 5 parts: \textbf{Instruction Fetch}, \textbf{Decode}, \textbf{Execute}, \textbf{Memory}, and \textbf{Writeback}. The clock on the far left determines when the data from one stage is transmitted to the next. This is done by the use of what we call \textbf{isolators}, which are simply a collections of registers that update on the rising edge of the clock. 
@@ -52,15 +55,18 @@ The processor pipeline consists of 5 parts: \textbf{Instruction Fetch}, \textbf{
 \section{The Fetch Stage}
 The Fetch Stage is where the program instruction is extracted from the ROM. 
 \subsection{Circuit Diagram}
-\begin{wrapfigure}{r}{0.5\textwidth}
+\begin{wrapfigure}{r}{0.35\textwidth}
 \vspace{-1.7cm}
 \begin{center}
-\includegraphics[scale=0.9]{Fetch.png} \\
+\includegraphics[scale=0.8]{Fetch.png} \\
 Figure 4: Fetch
 \end{center}
 \vspace{-1.2cm}
 \end{wrapfigure}
-The Fetch stage has two main components: the \textbf{MIPS Program ROM} and the \textbf{Incrementer}. The MIPS Program ROM outputs 32-bit instruction codes one by one into the isolator on the right. The instruction outputted is determined by the \textbf{program counter (PC)}, which initially begins at 0. Each subsequent instruction has PC of 4 greater than the previous instruction's PC. The incrementer will add 4 to the PC, and the register next to it makes it do so on each clock tick. Both the PC as well as the instruction code will be stored in the isolator.
+The Fetch stage has three main components: the \textbf{MIPS Program ROM},the \textbf{Incrementer} and the \textbf{Branching Circuit}. The MIPS Program ROM outputs 32-bit instruction codes depending on the inputted \textbf{program counter (PC)} to the isolator on the right. \\
+The starting value of PC for any program is 0. Each subsequent instruction has PC 4 greater than that of the previous instruction. The incrementer will add 4 to the PC and store the result into the adjacent register on each clock tick. The register, however, is disabled when we must stall because of loading. \\
+The branching circuit will usually output PC+4, as given by the incrementer. While branching, however, we it will instead output the jump or branch address. \\
+The PC and the instruction code will be stored in the isolator to be used in the Decode stage. \\
 
 \subsubsection{Submodule A: Incrementer}
 \begin{wrapfigure}{r}{0.5\textwidth}
@@ -72,6 +78,17 @@ Figure 5: Incrementer
 \vspace{-13mm}
 \end{wrapfigure}
 Figure 5 on the right is the Incrementer. We simply take the bits 2 through 32 and increase the value by 1. After appending back on the two least significant bits, we essentially have added 4 to the PC.
+
+\subsubsection{Submodule B: Branch Circuit}
+\begin{wrapfigure}{r}{0.4\textwidth}
+\vspace{-1cm}
+\begin{center}
+\includegraphics[width=0.4\textwidth]{FetchBranch.png} \\
+Figure 6: Branching Circuit
+\end{center}
+\vspace{-1cm}
+\end{wrapfigure}
+Figure 6 is the branching circuit. It takes the inputs \
 
 \subsection{Correctness Constraints}
 The functional requirements for the circuit is as follows:
@@ -162,6 +179,41 @@ SLLV & 000x & 0 & 0 & 1 & 0 & 1&&\\ \hline
 SRLV & 0100 & 0 & 0 & 1 & 0 & 1&&\\ \hline
 SRAV & 0101 & 0 & 0 & 1 & 0 & 1&&\\ \hline
 LUI & 001x & 1 & 0 & 1 & 0 &&&01\\ \hline
+J & xxxx & 1 & 0 & 0 & 0 &&&x1 \\ \hline
+JR & xxxx & 0 & 0 & 0 & 0 &&& \\ \hline
+JAL & xxxx & 1 & 0 & 1 & 0 &&&x1 \\ \hline
+JALR & xxxx & 0 & 0 & 1 & 0 &&& \\ \hline
+BEQ & 001x & 1 & 0 & 0 & 0 &&&10 \\ \hline
+BNE & 001x & 1 & 0 & 0 & 0 &&&10 \\ \hline
+BLEZ& 001x & 1 & 0 & 0 & 0 &&&10 \\ \hline
+BGTZ& 001x & 1 & 0 & 0 & 0 &&&10 \\ \hline
+BLTZ& 001x & 1 & 0 & 0 & 0 &&&10 \\ \hline
+BGEZ& 001x & 1 & 0 & 0 & 0 &&&10 \\ \hline
+LW & 001X & 1 & 1 & 0 & 1 &&& 10 \\ \hline
+LB & 001X & 1 & 1 & 0 & 1 &&& 10 \\ \hline
+LBU & 001X & 1 & 0 & 0 & 0 &&& 10 \\ \hline
+SW & 001X & 1 & 0 & 0 & 0 &&& 10 \\ \hline
+SB & 001X & 1 & 0 & 0 & 0 &&& 10 \\ \hline
+\end{tabular} \vspace{2mm}\\
+For the following table, the values for Instructions of Project 1 are all set to 0.
+\begin{tabular}{|c|c|c|c|c|c|c|} \hline
+& \textbf{Load/Store} & \textbf{Jump/Branch} && \textbf{Comp} & & \\ 
+\textbf{Instruction} & \textbf{Byte} & \textbf{Enable} & \textbf{Link} & \textbf{Code} & \textbf{Branch} & \textbf{R Jump} \\ \hline
+J &0& 1 & 0 & 000 & 0 & 0 \\ \hline
+JR &0& 1 & 0 & 000 & 0 & 1 \\ \hline
+JAL &0& 1 & 1 & 000 & 0 & 0 \\ \hline
+JALR &0& 1 & 1 & 000 & 0 & 1 \\ \hline
+BEQ &0& 1 & 0 & 010 & 1 & 0 \\ \hline
+BNE &0& 1 & 0 & 011 & 1 & 0 \\ \hline
+BLEZ &0& 1 & 0 & 100 & 1 & 0 \\ \hline
+BGTZ &0& 1 & 0 & 111 & 1 & 0 \\ \hline
+BLTZ &0& 1 & 0 & 101 & 1 & 0 \\ \hline
+BGEZ &0& 1 & 0 & 110 & 1 & 0 \\ \hline
+LW & 0 & 0 & 0  &000& 0&0 \\ \hline
+LB & 1 & 0 & 0  &000& 0&0 \\ \hline
+LBU & 1 & 0 & 0  &000& 0&0 \\ \hline
+SW & 0 & 0 & 0  &000& 0&0 \\ \hline
+SB & 1 & 0 & 0 &000& 0&0 \\ \hline
 \end{tabular}
 \end{center}
 \normalsize

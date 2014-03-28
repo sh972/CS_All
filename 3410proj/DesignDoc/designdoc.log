@@ -1,22 +1,23 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.1.26)  27 MAR 2014 19:40
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.28)  27 MAR 2014 22:14
 entering extended mode
 **designdoc.tex
 
-(C:\Users\Colin\Documents\GitHub\CS4220-SP2014\3410proj\DesignDoc\designdoc.tex
+(C:\Users\Stern\Dropbox\Spring_2014\CS4220-SP2014\3410proj\DesignDoc\designdoc.
+tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
 croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
-lician, german, german-x-2013-05-26, greek, gujarati, hindi, hungarian, iceland
+lician, german, german-x-2012-05-30, greek, gujarati, hindi, hungarian, iceland
 ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
  lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
-german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+german-x-2012-05-30, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
 ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
 an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
 ishmax, welsh, loaded.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size10.clo"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size10.clo"
 File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -31,24 +32,24 @@ File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
 Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
 Package: amstext 2000/06/29 v2.01
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks14
 \ex@=\dimen103
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen104
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count87
@@ -89,31 +90,31 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks19
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count99
@@ -121,7 +122,7 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen112
 \Gin@req@width=\dimen113
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\wrapfig\wrapfig.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\wrapfig\wrapfig.sty"
 \wrapoverhang=\dimen114
 \WF@size=\dimen115
 \c@WF@wrappedlines=\count100
@@ -129,18 +130,18 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \WF@everypar=\toks20
 Package: wrapfig 2003/01/31  v 3.6
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
 Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count101
@@ -156,9 +157,9 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen123
 \Gm@dimlist=\toks21
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
-(C:\Users\Colin\Documents\GitHub\CS4220-SP2014\3410proj\DesignDoc\designdoc.aux
-)
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+(C:\Users\Stern\Dropbox\Spring_2014\CS4220-SP2014\3410proj\DesignDoc\designdoc.
+aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 8.
@@ -171,7 +172,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+ ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count104
 \scratchdimen=\dimen124
@@ -224,22 +225,248 @@ Underfull \hbox (badness 10000) in paragraph at lines 13--14
 
  []
 
-! I can't write on file `designdoc.pdf'.
-Please type another file name for output
-! Emergency stop.
-<argument> ...stobj \GPT@objref }}}\fi \pdfximage 
-                                                  \GPT@RuleAttr \ifx \GPT@pa...
-l.17 \includegraphics[scale=1.3]{pipeline.png}
-                                               \\
-*** (job aborted, file error in nonstop mode)
+<pipeline.png, id=1, 290.88675pt x 215.6055pt>
+File: pipeline.png Graphic file (type png)
+ <use pipeline.png>
+Package pdftex.def Info: pipeline.png used on input line 17.
+(pdftex.def)             Requested size: 378.15273pt x 280.28711pt.
+ [1
 
- 
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Stern/Dropbox/Sp
+ring_2014/CS4220-SP2014/3410proj/DesignDoc/pipeline.png>]
+<isolator34.png, id=13, 347.79938pt x 596.98032pt>
+File: isolator34.png Graphic file (type png)
+ <use isolator34.png>
+Package pdftex.def Info: isolator34.png used on input line 25.
+(pdftex.def)             Requested size: 191.29024pt x 328.34018pt.
+
+Overfull \hbox (21.81383pt too wide) in paragraph at lines 25--25
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--29
+
+ []
+
+<Overview.png, id=14, 1019.30812pt x 593.21625pt>
+File: Overview.png Graphic file (type png)
+ <use Overview.png>
+Package pdftex.def Info: Overview.png used on input line 50.
+(pdftex.def)             Requested size: 407.71602pt x 237.28229pt.
+ [2 <C:/Users/Stern/Dropbox/Spring_2014/CS4220-SP2014/3410proj/DesignDoc/isolat
+or34.png> <C:/Users/Stern/Dropbox/Spring_2014/CS4220-SP2014/3410proj/DesignDoc/
+Overview.png>] <Fetch.png, id=20, 204.765pt x 246.9225pt>
+File: Fetch.png Graphic file (type png)
+ <use Fetch.png>
+Package pdftex.def Info: Fetch.png used on input line 61.
+(pdftex.def)             Requested size: 163.8122pt x 197.53824pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 66--70
+
+ []
+
+<Incrementer.png, id=21, 286.06876pt x 73.4745pt>
+File: Incrementer.png Graphic file (type png)
+ <use Incrementer.png>
+Package pdftex.def Info: Incrementer.png used on input line 75.
+(pdftex.def)             Requested size: 242.10493pt x 62.18341pt.
+
+<FetchBranch.png, id=22, 317.988pt x 224.63925pt>
+File: FetchBranch.png Graphic file (type png)
+ <use FetchBranch.png>
+Package pdftex.def Info: FetchBranch.png used on input line 86.
+(pdftex.def)             Requested size: 193.68098pt x 136.82407pt.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 97.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 97.
+
+<DecodeOut.png, id=23, 245.718pt x 273.4215pt>
+File: DecodeOut.png Graphic file (type png)
+ <use DecodeOut.png>
+Package pdftex.def Info: DecodeOut.png used on input line 108.
+(pdftex.def)             Requested size: 184.28804pt x 205.0656pt.
+ [3 <C:/Users/Stern/Dropbox/Spring_2014/CS4220-SP2014/3410proj/DesignDoc/Fetch.
+png> <C:/Users/Stern/Dropbox/Spring_2014/CS4220-SP2014/3410proj/DesignDoc/Incre
+menter.png> <C:/Users/Stern/Dropbox/Spring_2014/CS4220-SP2014/3410proj/DesignDo
+c/FetchBranch.png>] [4 <C:/Users/Stern/Dropbox/Spring_2014/CS4220-SP2014/3410pr
+oj/DesignDoc/DecodeOut.png>] <Split.png, id=35, 325.215pt x 127.677pt>
+File: Split.png Graphic file (type png)
+ <use Split.png>
+Package pdftex.def Info: Split.png used on input line 146.
+(pdftex.def)             Requested size: 195.1305pt x 76.60678pt.
+
+Overfull \hbox (1.44951pt too wide) in paragraph at lines 146--146
+ [] 
+ []
+
+[5 <C:/Users/Stern/Dropbox/Spring_2014/CS4220-SP2014/3410proj/DesignDoc/Split.p
+ng>] [6] <Decoder.png, id=45, 654.64575pt x 531.78674pt>
+File: Decoder.png Graphic file (type png)
+ <use Decoder.png>
+Package pdftex.def Info: Decoder.png used on input line 248.
+(pdftex.def)             Requested size: 458.2489pt x 372.24818pt.
+
+Overfull \hbox (167.72002pt too wide) in paragraph at lines 248--248
+ [] 
+ []
+
+
+Underfull \hbox (badness 4859) in paragraph at lines 267--268
+[]\OT1/cmr/m/n/10 The op-er-a-tion de-sired must be
+ []
+
+
+Overfull \hbox (1.84607pt too wide) in paragraph at lines 267--268
+\OT1/cmr/bx/n/10 MOVN\OT1/cmr/m/n/10 , \OT1/cmr/bx/n/10 MOVZ\OT1/cmr/m/n/10 , \
+OT1/cmr/bx/n/10 SLL\OT1/cmr/m/n/10 , \OT1/cmr/bx/n/10 SRL\OT1/cmr/m/n/10 , \OT1
+/cmr/bx/n/10 SRA\OT1/cmr/m/n/10 ,
+ []
+
+[7 <C:/Users/Stern/Dropbox/Spring_2014/CS4220-SP2014/3410proj/DesignDoc/Decoder
+.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 274--275
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 276--277
+
+ []
+
+<ALU.png, id=52, 240.9pt x 542.77782pt>
+File: ALU.png Graphic file (type png)
+ <use ALU.png>
+Package pdftex.def Info: ALU.png used on input line 284.
+(pdftex.def)             Requested size: 170.71652pt x 384.6544pt.
+
+<EXOVER.png, id=53, 1050.92625pt x 688.82344pt>
+File: EXOVER.png Graphic file (type png)
+ <use EXOVER.png>
+Package pdftex.def Info: EXOVER.png used on input line 297.
+(pdftex.def)             Requested size: 426.79134pt x 279.73924pt.
+ [8 <C:/Users/Stern/Dropbox/Spring_2014/CS4220-SP2014/3410proj/DesignDoc/ALU.pn
+g>]
+<Forward1.png, id=58, 234.8775pt x 343.2825pt>
+File: Forward1.png Graphic file (type png)
+ <use Forward1.png>
+Package pdftex.def Info: Forward1.png used on input line 308.
+(pdftex.def)             Requested size: 140.92758pt x 205.97107pt.
+
+Overfull \hbox (10.18886pt too wide) in paragraph at lines 308--308
+ [] 
+ []
+
+<Forward2.png, id=59, 584.93532pt x 264.99pt>
+File: Forward2.png Graphic file (type png)
+ <use Forward2.png>
+Package pdftex.def Info: Forward2.png used on input line 315.
+(pdftex.def)             Requested size: 380.20345pt x 172.24146pt.
+ [9 <C:/Users/Stern/Dropbox/Spring_2014/CS4220-SP2014/3410proj/DesignDoc/EXOVER
+.png> <C:/Users/Stern/Dropbox/Spring_2014/CS4220-SP2014/3410proj/DesignDoc/Forw
+ard1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 317--318
+
+ []
+
+<Immediate.png, id=65, 199.49532pt x 104.64093pt>
+File: Immediate.png Graphic file (type png)
+ <use Immediate.png>
+Package pdftex.def Info: Immediate.png used on input line 325.
+(pdftex.def)             Requested size: 159.59645pt x 83.71283pt.
+
+Overfull \hbox (14.33202pt too wide) in paragraph at lines 325--325
+ [] 
+ []
+
+<Code.png, id=66, 496.10344pt x 95.6072pt>
+File: Code.png Graphic file (type png)
+ <use Code.png>
+Package pdftex.def Info: Code.png used on input line 335.
+(pdftex.def)             Requested size: 446.48897pt x 86.04567pt.
+
+<OUTPUT.png, id=67, 405.76593pt x 190.46156pt>
+File: OUTPUT.png Graphic file (type png)
+ <use OUTPUT.png>
+Package pdftex.def Info: OUTPUT.png used on input line 344.
+(pdftex.def)             Requested size: 324.61317pt x 152.36943pt.
+
+Overfull \hbox (9.87971pt too wide) in paragraph at lines 344--344
+ [] 
+ []
+
+
+Underfull \hbox (badness 1308) in paragraph at lines 349--350
+[]\OT1/cmr/m/n/10 The out-put C out is by de-fault
+ []
+
+[10 <C:/Users/Stern/Dropbox/Spring_2014/CS4220-SP2014/3410proj/DesignDoc/Forwar
+d2.png> <C:/Users/Stern/Dropbox/Spring_2014/CS4220-SP2014/3410proj/DesignDoc/Im
+mediate.png> <C:/Users/Stern/Dropbox/Spring_2014/CS4220-SP2014/3410proj/DesignD
+oc/Code.png> <C:/Users/Stern/Dropbox/Spring_2014/CS4220-SP2014/3410proj/DesignD
+oc/OUTPUT.png>] <MOV.png, id=75, 190.46156pt x 68.50594pt>
+File: MOV.png Graphic file (type png)
+ <use MOV.png>
+Package pdftex.def Info: MOV.png used on input line 362.
+(pdftex.def)             Requested size: 190.46107pt x 68.50577pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 379--380
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 381--382
+
+ []
+
+[11 <C:/Users/Stern/Dropbox/Spring_2014/CS4220-SP2014/3410proj/DesignDoc/MOV.pn
+g>]
+Underfull \hbox (badness 10000) in paragraph at lines 393--394
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 395--396
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 397--398
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 399--400
+
+ []
+
+[12]
+(C:\Users\Stern\Dropbox\Spring_2014\CS4220-SP2014\3410proj\DesignDoc\designdoc.
+aux) ) 
 Here is how much of TeX's memory you used:
- 2286 strings out of 493921
- 30058 string characters out of 3144876
- 91036 words of memory out of 3000000
- 5586 multiletter control sequences out of 15000+200000
- 8262 words of font info for 30 fonts, out of 3000000 for 9000
+ 2407 strings out of 493921
+ 31657 string characters out of 3147282
+ 122036 words of memory out of 3000000
+ 5678 multiletter control sequences out of 15000+200000
+ 10814 words of font info for 39 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,6n,32p,312b,191s stack positions out of 5000i,500n,10000p,200000b,50000s
-!  ==> Fatal error occurred, no output PDF file produced!
+ 27i,7n,32p,599b,228s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C
+:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Progra
+m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Program Files/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
+c/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti
+10.pfb>
+Output written on designdoc.pdf (12 pages, 370508 bytes).
+PDF statistics:
+ 112 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 86 words of extra memory for PDF output out of 10000 (max. 10000000)
+
