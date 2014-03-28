@@ -1,5 +1,66 @@
-ADDIU $16, $16, 7
-SW $16, 4($0)
+ADDIU $16, $0, 4
+ADDIU $16, $16, 3
+
+# These three instructions test SW for positive, negative and 0 offsets, and with 2 step forwarding, 1 step (override 2 step) forwarding, and no forwarding.
+SW $16, 8($0) 		# R00002 <- 00000007
+SW $16, -3($16)		# R00001 <- 00000007
+SW $16, 0($0)		# R00000 <- 00000007
+
+ADDIU $17, $0, 1
+ADDIU $17, $17, 3
+
+# These four instructions test SB for each byte location, for positive and negative offsets, and for 2 step, 1 step (override 2 step) and no forwarding.
+SB $17, 11($0) 		# R00002 <- 04000007
+SB $17, -1($16)		# R00001 <- 00040007
+SB $16, 1($0)		# R00000 <- 00000707
+SB $16, 5($16)		# R00003 <- 00000007
+
+ADDIU $16, $0, 8
+
+# This tests generic LW with 1 step forwarding
+LW $17, 4($16) 		# $17 <- 00000007
+
+# These two test forwarding with stall, as well as loading with negative offset.
+LW $17, -3($17)		# $17 <- 00040007 
+SRA $17, $17, 16	# $17 <- 00000004
+
+ADDIU $18, $0, -1
+SB $18, 16($0)		# R00004 <- 000000ff
+ADDIU $18, $0, -2
+SB $18, 17($0)		# R00004 <- 0000feff
+ADDIU $18, $0, -3
+SB $18, 18($0)		# R00004 <- 00fdfeff
+ADDIU $18, $0, -4
+SB $18, 19($0)		# R00004 <- fcfdfeff
+ADDIU $18, $0, 1
+SB $18, 20($0)		# R00005 <- 00000001
+ADDIU $18, $0, 2
+SB $18, 21($0)		# R00005 <- 00000201
+ADDIU $18, $0, 3
+SB $18, 22($0)		# R00005 <- 00030201
+ADDIU $18, $0, 4
+SB $18, 23($0)		# R00005 <- 04030201
+
+# These eight instructures test LB for each byte location and positive and negative bytes.
+LB $19, 16($0)		# $19 <- ffffffff
+LB $20, 17($0)		# $20 <- fffffffe
+LB $21, 18($0)		# $21 <- fffffffd
+LB $22, 19($0)		# $22 <- fffffffc
+LB $23, 20($0)		# $23 <- 00000001
+LB $24, 21($0)		# $24 <- 00000002
+LB $25, 22($0)		# $25 <- 00000003
+LB $26, 23($0)		# $26 <- 00000004
+
+# These eight instructures test LBU for each byte location and positive and negative bytes.
+LBU $18, 16($0)		# $18 <- 000000ff
+LBU $19, 17($0)		# $19 <- 000000fe
+LBU $20, 18($0)		# $20 <- 000000fd
+LBU $21, 19($0)		# $21 <- 000000fc
+LBU $22, 20($0)		# $22 <- 00000001
+LBU $23, 21($0)		# $23 <- 00000002
+LBU $24, 22($0)		# $24 <- 00000003
+LBU $25, 23($0)		# $25 <- 00000004
+
 LW $17, 4($0)		#Tests load word and store word, $16 = $17 = 7
 ADDU $18, $17, $0 	#Tests forwarding with stalling after load, $18 = 7
 LW $19, 4($0)		#Tests loading without stalling
