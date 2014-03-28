@@ -4,8 +4,6 @@ ADDIU $ra, $0, 9000
 recursion: 
 ADDIU $sp, $sp, 8	# makes room for link address (next stack)
 SW $ra, 4($sp)		# save link address
-ADDIU $t0, $v0, 0
-SW $a0, 0($sp)		# save the value of the output
 ADDIU $t1, $zero, 1	# $t1 = 1
 BEQ $a0, $t1, end	# if(n == 1) return 0
 NOP

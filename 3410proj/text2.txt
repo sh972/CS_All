@@ -26,35 +26,35 @@ ADDIU $4, $4, 1
 ADDIU $3, $3, -1
 # All of the next branch instructions should branch. If they do not branch, Register 5 is incremented.
 # There are instructions included in the delay slots as well. Register 6 should be incremented each time, totalling 8
-BEQ $2, $2, 12
+BEQ $2, $2, 12		# 1 Jumps to 2
 ADDIU $6, $6, 1
 ADDIU $5, $5, 1
 NOP
-BNE $1, $2, 12
+BNE $1, $2, 28 		# 2 Jumps to 4
 ADDIU $6, $6, 1
 ADDIU $5, $5, 1
 NOP
-BLEZ $0, 12
+BLEZ $0, 28		# 3 Jumps to 5
 ADDIU $6, $6, 1
 ADDIU $5, $5, 1
 NOP
-BLEZ $2, 12
+BLEZ $2, -20		# 4 Jumps to 3
 ADDIU $6, $6, 1
 ADDIU $5, $5, 1
 NOP
-BGTZ $1, 12
+BGTZ $1, 12		# 5 Jumps to 6
 ADDIU $6, $6, 1
 ADDIU $5, $5, 1
 NOP
-BLTZ $2, 12
+BLTZ $2, 12		# 6 Jumps to 7
 ADDIU $6, $6, 1
 ADDIU $5, $5, 1
 NOP
-BGEZ $0, 12
+BGEZ $0, 12		# 7 Jumps to 8
 ADDIU $6, $6, 1
 ADDIU $5, $5, 1
 NOP
-BGEZ $1, 12
+BGEZ $1, 12		# 8 Jumps to end
 ADDIU $6, $6, 1
 ADDIU $5, $5, 1
 #Altogether BGTZ, BLTZ, BLEZ, BGEZ are tested 3 times each, with -1, 1, and 0, and BEQ and BNE are tested 2 times each.
