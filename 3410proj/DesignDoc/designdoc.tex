@@ -88,7 +88,7 @@ Figure 6: Branching Circuit
 \end{center}
 \vspace{-1cm}
 \end{wrapfigure}
-Figure 6 is the branching circuit. It takes the inputs \
+Figure 6 is the branching circuit. It takes the inputs \textbf{PC+4}, \textbf{JumpAddress}, and \textbf{Jump/Branch}. The output PC is mainly determined by Jump/Branch. When we are not jumping or branching, we simply output PC+4. However, when we jump or branch, we select JumpAddress instead. At the start of a program, Jump/Branch is undetermined. In order to get around this, we set the output to PC+4 if PC+4 is equal to 4.
 
 \subsection{Correctness Constraints}
 The functional requirements for the circuit is as follows:
