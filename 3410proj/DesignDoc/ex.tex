@@ -135,6 +135,39 @@ The final output is the Byte Select. The AND gates in (1.2) extract from the fir
 \includegraphics{ByteExtract.png} 
  The Byte Extract, much as the name suggests, extracts the byte from RAM output in LB and LBU instructions, and does nothing otherwise.
  
- From the MUX in (1.1), the 
+ From the MUX in (1.1), the output is just the original input if the memory instruction is a word instruction. 
+ 
+ In (1.2), since the Byte select will only have 1 nonzero bit if the memory instruction is a byte instruction, 3 of the sign extends will output all 0s and 1 will output all 1s. Each of them are ANDed with a byte from the Input; only one of those bytes will retain its information. These 4 lines are ORed and we are left with the byte that we need to extract. Finally in (1.3), the byte is zero extended or sign extended according to the instruction.
+ 
+\subsubsection{Linking Helper}
+\includegraphics{Linking.png}
+This subcircuit is relatively simple and only exists to simplify the main circuit. In (1.1), "rd out" is either the original "rd in", or 31 if we are linking. The 31 is created by sign extending the linking variable to 11111.
+
+"C out", the word that we want to store in rd, is simply chosen for by a MUX.
+
+\subsection{Load Stall and Jumping}
+\includegraphics{Disable.png}
+Load Stalling and Jumping happen when the instruction reaches the Memory Stage. The Load Stall line is achieved by ANDing the Load Enable and the output from the Execute Stage indicating whether or not the rs and rt from the Execute Stage coincide with the rd in the Memory Stage. The Jump Variable is just given from the EX/MEM registers. 
+
+Our Load Stall works by disabling the IF/ID, ID/EX, and PC registers and disabling the Jump Variable, Load Enable, and the two Write Enables in the Execute Stage (effectively canceling the instruction). 
+
+Our Jump also disables the same 4 variables, but in the Decode Stage, which is the instruction after the Delay Slot. The target address and the Jump Variable are fed into the Instruction Fetch Stage to do the actual Jump.
+
+\subsection{Correctness Constraints}
+\begin{itemize}
+\item
+Assuming all preceding stages are correct, the main constraint for the Memory Stage is the RAM Write Address has to be a valid word address if the associated memory instruction is a word instruction. Technically our circuit would treat the address as if the first two bits indicating bytes were 0s. We don't have a method to call an error, thus we are limited in this way.
+\end{itemize}
+
+\subsection{Testing}
+Testing for the Memory Stage is essentially testing memory instructions.
+
+Load Word is tested by storing a word first, then loading it into the register file, so it makes sense to test Store Word first.
+
+Testing storing word basically 
+
+The main thing we need to check for the Load instructions is whether or not the Stall works properly. We make sure that 1 step forwarding stalls properly. We also make sure that 2 step forwarding does not stall and that non forwarded Load instructions don't stall. 
+
+T  
 
 \end{document}
