@@ -1,0 +1,37 @@
+# This program runs the hailstone sequence on n = 40, which should return 8 in the output register $2. Once the recursion finishes, the program counter will jump to 0x0000232c. 
+
+ADDIU $a0, $0, 40	# n = 40
+ADDIU $ra, $0, 9004	# exit address = 9004 (232c in hexa)
+
+recursion: 
+ADDIU $sp, $sp, 4	# makes room for link address (next stack)
+SW $ra, 0($sp)		# save link address
+ADDIU $t1, $zero, 1	# $t1 = 1
+BEQ $a0, $t1, end	# if(n == 1) return 0
+ANDI $t1, $a0, 1	# $t1 = n % 2
+BEQ $t1, $zero, even	# if(n % 2 == 0) return 1 + r_hailstone(n/2)
+NOP
+BNE $t1, $zero, odd	# else return 1 + r_hailstone(3n+1)
+NOP
+
+
+even:
+SRA $a0, $a0, 1		# n/2
+JAL recursion		# r_hailstone(n/2)
+ADDIU $v0, $v0, 1	# 1 + r_hailstone(n/2)
+J end			# go up one stack
+
+odd:
+SLL $t2, $a0, 1		# $t2 = 2n
+ADDU $a0, $a0, $t2	# $a0 = 3n
+ADDIU $a0, $a0, 1	# $a0 = 3n+1
+JAL recursion		# r_hailstone(3n+1)
+ADDIU $v0, $v0, 1	# 1 + r_hailstone(3n+1)
+J end			# go up one stack
+
+end:
+LW $ra, 0($sp)		# load link address
+ADDIU $sp, $sp, -4	# return to previous $sp (previous stack)
+JR $ra			# exit stack
+
+

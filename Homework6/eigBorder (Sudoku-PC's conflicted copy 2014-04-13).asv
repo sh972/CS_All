@@ -1,0 +1,16 @@
+function [Q,D] = eigBorder(delta,v,alpha)
+% delta and v are column vectors with length n-1.
+% delta(1) < delta(2) < ... < delta(n-1), v(1),...,v(n-1) are nonzero, and alpha is real.
+% Q is orthogonal and D is diagonal and Q’*[diag(delta) v ; v’ alpha]*Q = D.
+
+f = @(lambda,delta,v,alpha) lambda + v'*(diag(delta-lambda)\v) - alpha; 
+
+fzero(@(lambda) @(lambda,delta,v,alpha), [d+eps(d) e-eps(e)]);
+
+
+
+D = diag(d);
+Q = zeros(n,n);
+for i=1:n
+    
+    Q(:,i) = 

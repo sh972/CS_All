@@ -128,36 +128,6 @@ ADDIU $5, $5, 1
 
 
 
-# **Jump tests.
-# If the Jumps work correctly, the program should run infinitely and $1 should increment with each full loop, while $2 = 10 (16), $3 = 7, $4 = 8, $5 = 2, $6 = 0, $7 = 34 (52)
-# We note that getting hailstone to work is testing in and of itself, especially of memory and linking.
-
-	ADDIU $1, $0, 5
-
-# Jumps to Jump1. $6 should not change to 6, as the instruction should be canceled. $1 should remain at 5, and $2 should be equal c. 
-	J Jump1			# $1 = 5, $2 = c, $3 = 0
-	NOP
-	ADDIU $6, $0, 6
-Jump0:	ADDIU $3, $0, 7
-
-# Jump and link should link PC+8, or the instruction two ahead. Uses the delay slot, which increments $1. 
-	JAL Jump2
-	ADDIU $1, $1, 1
-
-Jump1: 	ADDIU $2, $0, 16
-
-# Jumps to Jump0. Delay Slot is used.
-	JR $2			# $3 = 7, $4 = 8
-	ADDIU $4, $0, 8
-
-Jump2: 	ADDIU $5, $0, 2
-
-# Jumps back to Jump1, which was linked by JAL. Delay Slot used to store $ra from JALR.
-	JALR $ra
-	ADDIU $7, $ra, 0
-
-
-
 # **Tests for Load and Store and Stalling.
 
 ADDIU $16, $0, 4
@@ -222,3 +192,33 @@ LBU $22, 20($0)		# $22 <- 00000001
 LBU $23, 21($0)		# $23 <- 00000002
 LBU $24, 22($0)		# $24 <- 00000003
 LBU $25, 23($0)		# $25 <- 00000004
+
+
+
+# **Jump tests.
+# If the Jumps work correctly, the program should run infinitely and $1 should increment with each full loop, while $2 = 10 (16), $3 = 7, $4 = 8, $5 = 2, $6 = 0, $7 = 34 (52)
+# We note that getting hailstone to work is testing in and of itself, especially of memory and linking.
+
+	ADDIU $1, $0, 5
+
+# Jumps to Jump1. $6 should not change to 6, as the instruction should be canceled. $1 should remain at 5, and $2 should be equal c. 
+	J Jump1			# $1 = 5, $2 = c, $3 = 0
+	NOP
+	ADDIU $6, $0, 6
+Jump0:	ADDIU $3, $0, 7
+
+# Jump and link should link PC+8, or the instruction two ahead. Uses the delay slot, which increments $1. 
+	JAL Jump2
+	ADDIU $1, $1, 1
+
+Jump1: 	ADDIU $2, $0, 16
+
+# Jumps to Jump0. Delay Slot is used.
+	JR $2			# $3 = 7, $4 = 8
+	ADDIU $4, $0, 8
+
+Jump2: 	ADDIU $5, $0, 2
+
+# Jumps back to Jump1, which was linked by JAL. Delay Slot used to store $ra from JALR.
+	JALR $ra
+	ADDIU $7, $ra, 0
