@@ -37,14 +37,12 @@ while(f(intervals(n, 2)) < 0 )
     change = change * 2;
 end
 
-% Finds the new eigenvalues
+d = arrayfun(fzero
 for i = 1:n
     d(i) = fzero(f, intervals(i,:));
 end
 
 Q = zeros(n,n);
-
-% Calculates the new eigenvectors from the new eigenvalues
 for i=1:n
     P = diag(delta-d(i));
     x = [P\(-v) ; 1];

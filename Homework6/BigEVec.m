@@ -22,11 +22,13 @@ n = size(U, 1);
 mu = 1;
 A = U + mu * eye(n, n);
 
+% v is our random vector
 v = randn(n,1);
 v = v/norm(v);
 its = 0;
 
-
+% Ends when either the condition is met, or the number of iterations
+% reaches itMax
 while (norm(U*v - v) > tol) && (its ~= itMax)
     its = its + 1;
     w = A*v;
